@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- MAGICAL GIRL STAR WAND — held in right hand -->
+
+  <!-- Wand stick -->
+  <line x1="152" y1="216" x2="114" y2="140" stroke="#E8C040" stroke-width="5" stroke-linecap="round"/>
+  <!-- Stick shimmer -->
+  <line x1="152" y1="216" x2="114" y2="140" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Star at top of wand -->
+  <!-- Outer glow -->
+  <circle cx="108" cy="130" r="28" fill="#FFE880" opacity="0.25"/>
+  <circle cx="108" cy="130" r="20" fill="#FFE880" opacity="0.3"/>
+
+  <!-- Star shape (5-pointed) -->
+  <polygon
+    points="108,104 114,122 134,122 118,134 124,152 108,140 92,152 98,134 82,122 102,122"
+    fill="#F0C820"/>
+  <!-- Star inner glow -->
+  <polygon
+    points="108,110 112,122 124,122 114,130 118,142 108,134 98,142 102,130 92,122 104,122"
+    fill="#FFE880"/>
+  <!-- Star center gem -->
+  <circle cx="108" cy="128" r="8" fill="#FF80C0"/>
+  <circle cx="108" cy="128" r="5" fill="#FFB0D8"/>
+  <circle cx="106" cy="126" r="2" fill="white"/>
+
+  <!-- Sparkle trails from wand -->
+  <circle cx="96"  cy="108" r="3"   fill="#FFE880" opacity="0.9"/>
+  <circle cx="122" cy="112" r="2.5" fill="#FFE880" opacity="0.8"/>
+  <circle cx="90"  cy="118" r="2"   fill="#FFE880" opacity="0.7"/>
+  <circle cx="130" cy="106" r="2"   fill="#FFE880" opacity="0.7"/>
+  <circle cx="116" cy="100" r="1.5" fill="white"   opacity="0.8"/>
+  <circle cx="100" cy="96"  r="1.5" fill="white"   opacity="0.7"/>
+
+  <!-- Small stars floating -->
+  <text x="80"  y="108" font-size="10" fill="#F0C820" opacity="0.8">✦</text>
+  <text x="122" y="100" font-size="8"  fill="#F0C820" opacity="0.7">✦</text>
+  <text x="130" y="120" font-size="7"  fill="#FF80C0" opacity="0.8">★</text>
+
+  <!-- Ribbon on wand (decorative) -->
+  <path d="M 148 190 Q 158 184 156 194 Q 154 204 145 200 Q 140 195 148 190 Z" fill="#FF80A0"/>
+  <path d="M 148 190 Q 138 184 140 194 Q 142 204 151 200 Q 156 195 148 190 Z" fill="#FFB0C8"/>
+  <circle cx="148" cy="192" r="4" fill="#FF4878"/>
+</svg>

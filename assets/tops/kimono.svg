@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- KIMONO — red with gold details, wide sleeves -->
+
+  <!-- Wide left sleeve -->
+  <path d="M 62 154 Q 28 168 16 220 Q 20 232 36 228 Q 46 190 66 166 Z" fill="#CC2040"/>
+  <!-- Sleeve lining (gold) -->
+  <path d="M 28 210 Q 20 232 36 228 Q 40 220 32 214 Z" fill="#D4A020"/>
+  <!-- Sleeve edge -->
+  <path d="M 16 220 Q 20 230 36 228" fill="none" stroke="#D4A020" stroke-width="3"/>
+
+  <!-- Wide right sleeve -->
+  <path d="M 138 154 Q 172 168 184 220 Q 180 232 164 228 Q 154 190 134 166 Z" fill="#CC2040"/>
+  <!-- Sleeve lining (gold) -->
+  <path d="M 172 210 Q 180 232 164 228 Q 160 220 168 214 Z" fill="#D4A020"/>
+  <path d="M 184 220 Q 180 230 164 228" fill="none" stroke="#D4A020" stroke-width="3"/>
+
+  <!-- Main kimono body -->
+  <path d="M 70 150 Q 60 160 60 162 Q 56 200 62 228 L 138 228 Q 144 200 140 162 Q 140 160 130 150 Q 118 162 100 162 Q 82 162 70 150 Z" fill="#CC2040"/>
+
+  <!-- Right overlapping lapel (kimono wraps left over right) -->
+  <!-- Under piece (left lapel, darker red) -->
+  <path d="M 70 150 L 74 130 L 86 130 L 100 162 Q 82 162 70 150 Z" fill="#AA1030"/>
+  <!-- Over piece (right lapel) -->
+  <path d="M 130 150 L 126 130 L 114 130 L 100 162 Q 118 162 130 150 Z" fill="#CC2040"/>
+
+  <!-- Collar (white) -->
+  <path d="M 78 132 L 88 132 L 100 158 Q 94 158 88 154 Z" fill="#F5F0E8"/>
+  <path d="M 122 132 L 112 132 L 100 158 Q 106 158 112 154 Z" fill="#F5F0E8"/>
+
+  <!-- Gold obi (wide belt/sash) -->
+  <rect x="62" y="196" width="76" height="18" rx="3" fill="#D4A020"/>
+  <!-- Obi pattern -->
+  <rect x="62" y="196" width="76" height="3"  rx="0" fill="#B88010"/>
+  <rect x="62" y="211" width="76" height="3"  rx="0" fill="#B88010"/>
+  <!-- Obi decorative squares -->
+  <rect x="72"  y="200" width="8" height="10" rx="1" fill="#B88010"/>
+  <rect x="96"  y="200" width="8" height="10" rx="1" fill="#B88010"/>
+  <rect x="120" y="200" width="8" height="10" rx="1" fill="#B88010"/>
+  <!-- Center obi knot (musubi) -->
+  <rect x="90" y="194" width="20" height="24" rx="4" fill="#E8B830"/>
+  <ellipse cx="100" cy="206" rx="8" ry="10" fill="#D4A020"/>
+
+  <!-- Gold pattern on kimono (cherry blossom motifs) -->
+  <!-- Left front -->
+  <circle cx="72" cy="178" r="4" fill="#D4A020" opacity="0.6"/>
+  <circle cx="68" cy="172" r="3" fill="#D4A020" opacity="0.5"/>
+  <circle cx="76" cy="170" r="3" fill="#D4A020" opacity="0.5"/>
+  <circle cx="64" cy="178" r="3" fill="#D4A020" opacity="0.5"/>
+  <circle cx="72" cy="184" r="3" fill="#D4A020" opacity="0.5"/>
+  <!-- Right front -->
+  <circle cx="128" cy="178" r="4" fill="#D4A020" opacity="0.6"/>
+  <circle cx="124" cy="172" r="3" fill="#D4A020" opacity="0.5"/>
+  <circle cx="132" cy="170" r="3" fill="#D4A020" opacity="0.5"/>
+  <circle cx="120" cy="178" r="3" fill="#D4A020" opacity="0.5"/>
+  <circle cx="128" cy="184" r="3" fill="#D4A020" opacity="0.5"/>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- ORANGE TABBY CAT — sitting at lower left corner -->
+
+  <!-- Tail curling around -->
+  <path d="M 52 268 Q 20 260 14 248 Q 10 238 16 232 Q 22 228 28 236 Q 24 242 28 248 Q 36 256 58 260 Z" fill="#E87830"/>
+  <path d="M 52 268 Q 22 262 16 250 Q 14 244 18 238 Q 22 228 28 236 Q 24 242 28 248 Q 36 256 58 260 Z" fill="#F09050" opacity="0.5"/>
+
+  <!-- Body -->
+  <ellipse cx="44" cy="252" rx="28" ry="22" fill="#E87830"/>
+  <!-- Body markings (tabby stripes) -->
+  <path d="M 20 248 Q 28 244 36 248" fill="none" stroke="#C05820" stroke-width="2" opacity="0.6"/>
+  <path d="M 22 254 Q 30 250 38 254" fill="none" stroke="#C05820" stroke-width="2" opacity="0.6"/>
+  <path d="M 24 260 Q 32 256 40 260" fill="none" stroke="#C05820" stroke-width="2" opacity="0.6"/>
+
+  <!-- Front paws -->
+  <ellipse cx="32" cy="272" rx="10" ry="6"  fill="#E87830"/>
+  <ellipse cx="56" cy="272" rx="10" ry="6"  fill="#E87830"/>
+  <!-- Paw toe lines -->
+  <line x1="28" y1="274" x2="28" y2="278" stroke="#C05820" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="32" y1="275" x2="32" y2="279" stroke="#C05820" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="36" y1="274" x2="36" y2="278" stroke="#C05820" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="52" y1="274" x2="52" y2="278" stroke="#C05820" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="56" y1="275" x2="56" y2="279" stroke="#C05820" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="60" y1="274" x2="60" y2="278" stroke="#C05820" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Head -->
+  <circle cx="50" cy="228" r="24" fill="#E87830"/>
+
+  <!-- Ears -->
+  <polygon points="34,210 28,196 44,206" fill="#E87830"/>
+  <polygon points="34,210 30,200 42,208" fill="#F5A878" opacity="0.7"/>
+  <polygon points="66,210 72,196 56,206" fill="#E87830"/>
+  <polygon points="66,210 70,200 58,208" fill="#F5A878" opacity="0.7"/>
+
+  <!-- Face markings (tabby) -->
+  <path d="M 38 218 Q 44 214 50 218" fill="none" stroke="#C05820" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 40 222 Q 46 218 52 222" fill="none" stroke="#C05820" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Eyes (round, green) -->
+  <ellipse cx="44" cy="228" rx="7"  ry="7"  fill="#60C860"/>
+  <ellipse cx="44" cy="228" rx="4"  ry="5"  fill="#202020"/>
+  <circle  cx="46" cy="225" r="2"   fill="white"/>
+  <ellipse cx="58" cy="228" rx="7"  ry="7"  fill="#60C860"/>
+  <ellipse cx="58" cy="228" rx="4"  ry="5"  fill="#202020"/>
+  <circle  cx="60" cy="225" r="2"   fill="white"/>
+
+  <!-- Nose & mouth -->
+  <ellipse cx="51" cy="234" rx="3" ry="2" fill="#FF8090"/>
+  <path d="M 48 236 Q 51 240 54 236" fill="none" stroke="#C05820" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Whiskers left -->
+  <line x1="44" y1="234" x2="22" y2="230" stroke="#A06040" stroke-width="1" opacity="0.8"/>
+  <line x1="44" y1="236" x2="22" y2="236" stroke="#A06040" stroke-width="1" opacity="0.8"/>
+  <line x1="44" y1="238" x2="22" y2="242" stroke="#A06040" stroke-width="1" opacity="0.8"/>
+  <!-- Whiskers right -->
+  <line x1="58" y1="234" x2="78" y2="230" stroke="#A06040" stroke-width="1" opacity="0.8"/>
+  <line x1="58" y1="236" x2="78" y2="236" stroke="#A06040" stroke-width="1" opacity="0.8"/>
+  <line x1="58" y1="238" x2="78" y2="242" stroke="#A06040" stroke-width="1" opacity="0.8"/>
+
+  <!-- Pink bow collar -->
+  <path d="M 32 244 Q 50 248 68 244 Q 50 242 32 244 Z" fill="#FF80A0"/>
+  <path d="M 38 243 Q 36 240 38 244 Q 40 248 44 246 Q 46 244 38 243 Z" fill="#FF4878"/>
+  <path d="M 62 243 Q 64 240 62 244 Q 60 248 56 246 Q 54 244 62 243 Z" fill="#FF4878"/>
+  <circle cx="50" cy="244" r="3" fill="#FF0050"/>
+</svg>

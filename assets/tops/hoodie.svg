@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- OVERSIZED MINT HOODIE — cozy and cute -->
+
+  <!-- Body of hoodie (extra wide, oversized feel) -->
+  <path d="M 58 152 Q 44 162 42 162 Q 36 200 44 232 L 156 232 Q 164 200 158 162 Q 156 162 142 152 Q 124 168 100 168 Q 76 168 58 152 Z" fill="#80D8C0"/>
+
+  <!-- Hood / collar area -->
+  <path d="M 64 148 Q 68 136 88 132 Q 100 128 112 132 Q 132 136 136 148 Q 118 162 100 168 Q 82 162 64 148 Z" fill="#60C8B0"/>
+
+  <!-- Hood opening (darker inside) -->
+  <path d="M 74 148 Q 80 138 100 136 Q 120 138 126 148 Q 112 160 100 164 Q 88 160 74 148 Z" fill="#48B89A"/>
+
+  <!-- Sleeves (long, oversized) -->
+  <path d="M 58 152 Q 36 164 28 218 Q 36 230 52 226 Q 58 182 74 162 Z" fill="#80D8C0"/>
+  <path d="M 142 152 Q 164 164 172 218 Q 164 230 148 226 Q 142 182 126 162 Z" fill="#80D8C0"/>
+
+  <!-- Sleeve cuffs (ribbed) -->
+  <rect x="26" y="216" width="28" height="12" rx="5" fill="#60C8B0"/>
+  <rect x="146" y="216" width="28" height="12" rx="5" fill="#60C8B0"/>
+  <!-- Cuff ribbing lines -->
+  <line x1="31" y1="216" x2="31" y2="228" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="36" y1="216" x2="36" y2="228" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="41" y1="216" x2="41" y2="228" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="46" y1="216" x2="46" y2="228" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="151" y1="216" x2="151" y2="228" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="156" y1="216" x2="156" y2="228" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="161" y1="216" x2="161" y2="228" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="166" y1="216" x2="166" y2="228" stroke="#48B89A" stroke-width="1.5"/>
+
+  <!-- Kangaroo pocket -->
+  <path d="M 76 206 Q 76 220 84 226 L 116 226 Q 124 220 124 206 L 120 204 Q 100 210 80 204 Z" fill="#60C8B0"/>
+  <line x1="100" y1="204" x2="100" y2="226" stroke="#48B89A" stroke-width="1.5"/>
+
+  <!-- Hoodie hem ribbing -->
+  <rect x="44" y="228" width="112" height="8" rx="4" fill="#60C8B0"/>
+  <line x1="50"  y1="228" x2="50"  y2="236" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="60"  y1="228" x2="60"  y2="236" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="70"  y1="228" x2="70"  y2="236" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="80"  y1="228" x2="80"  y2="236" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="90"  y1="228" x2="90"  y2="236" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="100" y1="228" x2="100" y2="236" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="110" y1="228" x2="110" y2="236" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="120" y1="228" x2="120" y2="236" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="130" y1="228" x2="130" y2="236" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="140" y1="228" x2="140" y2="236" stroke="#48B89A" stroke-width="1.5"/>
+  <line x1="150" y1="228" x2="150" y2="236" stroke="#48B89A" stroke-width="1.5"/>
+
+  <!-- Front zipper pull -->
+  <line x1="100" y1="168" x2="100" y2="224" stroke="#48B89A" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="96" y="188" width="8" height="10" rx="2" fill="#38A888"/>
+  <rect x="97" y="192" width="6" height="2" rx="1" fill="#80D8C0"/>
+
+  <!-- Small star patch on shoulder -->
+  <text x="126" y="184" font-size="14" fill="#FFB7C5">★</text>
+</svg>

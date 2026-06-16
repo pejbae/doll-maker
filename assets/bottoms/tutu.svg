@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- LAYERED MINT TUTU SKIRT — fluffy tulle layers -->
+
+  <!-- Waistband -->
+  <rect x="66" y="218" width="68" height="10" rx="5" fill="#48B89A"/>
+
+  <!-- Layer 1 — base layer (longer, slightly darker) -->
+  <path d="M 66 226 Q 38 234 30 270 L 170 270 Q 162 234 134 226 Z" fill="#72C5A8" opacity="0.7"/>
+
+  <!-- Layer 2 (middle, main mint) -->
+  <path d="M 66 228 Q 42 242 40 270 L 160 270 Q 158 242 134 228 Z" fill="#90D8C0"/>
+
+  <!-- Layer 3 (front, lightest and shortest - poof on top) -->
+  <path d="M 68 228 Q 52 244 56 264 L 144 264 Q 148 244 132 228 Z" fill="#B5EAD7"/>
+
+  <!-- Tulle poof bumps on layer 3 (wavy/bumpy edge) -->
+  <path d="M 56 264 Q 64 258 72 264 Q 80 270 88 264 Q 96 258 104 264 Q 112 270 120 264 Q 128 258 136 264 Q 140 268 144 264" fill="none" stroke="#90D8C0" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Tulle poof bumps on layer 2 -->
+  <path d="M 40 270 Q 50 264 60 270 Q 70 276 80 270 Q 90 264 100 270 Q 110 276 120 270 Q 130 264 140 270 Q 150 276 160 270" fill="none" stroke="#72C5A8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Shimmer/sparkle dots on tutu -->
+  <circle cx="56"  cy="248" r="2" fill="white" opacity="0.8"/>
+  <circle cx="72"  cy="252" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="88"  cy="244" r="2" fill="white" opacity="0.8"/>
+  <circle cx="100" cy="256" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="112" cy="246" r="2" fill="white" opacity="0.8"/>
+  <circle cx="128" cy="252" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="144" cy="248" r="2" fill="white" opacity="0.8"/>
+
+  <!-- Stars on fabric -->
+  <text x="72"  y="258" font-size="8" fill="#48B89A" opacity="0.6">✦</text>
+  <text x="96"  y="262" font-size="8" fill="#48B89A" opacity="0.6">✦</text>
+  <text x="118" y="256" font-size="8" fill="#48B89A" opacity="0.6">✦</text>
+
+  <!-- Satin ribbon bow on waistband -->
+  <path d="M 88 220 Q 84 216 86 221 Q 88 226 93 223 Q 96 221 88 220 Z" fill="white"/>
+  <path d="M 112 220 Q 116 216 114 221 Q 112 226 107 223 Q 104 221 112 220 Z" fill="white"/>
+  <ellipse cx="100" cy="221" rx="4" ry="3.5" fill="#48B89A"/>
+</svg>

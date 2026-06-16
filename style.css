@@ -1,0 +1,406 @@
+/* ============================================
+   KAWAII DOLLZ MAKER — pastel dream stylesheet
+   ============================================ */
+
+:root {
+  --pink:          #FFB7C5;
+  --pink-light:    #FFD6E0;
+  --pink-deep:     #E8607A;
+  --lavender:      #E8D5F0;
+  --lavender-deep: #C080D8;
+  --lavender-mid:  #D4A0E8;
+  --mint:          #B5EAD7;
+  --mint-deep:     #72C5A8;
+  --blue:          #C7E5F8;
+  --cream:         #FFF5FA;
+  --text:          #5A3268;
+  --text-light:    #9A72AA;
+  --white:         #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── BODY / BACKGROUND ── */
+body {
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(circle at 1px 1px, var(--pink-light) 1.5px, transparent 0),
+    radial-gradient(circle at 1px 1px, var(--lavender) 1.5px, transparent 0);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 12px 12px;
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  text-align: center;
+  background: linear-gradient(135deg, var(--pink-light) 0%, var(--lavender) 50%, var(--blue) 100%);
+  border-bottom: 4px solid var(--pink);
+  padding-bottom: 12px;
+  overflow: hidden;
+}
+
+.header-deco {
+  display: flex;
+  justify-content: space-around;
+  padding: 4px 0;
+  font-size: 14px;
+  color: var(--lavender-deep);
+  background: rgba(255,255,255,0.35);
+}
+
+.site-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 18px 0 6px;
+}
+
+h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(18px, 4vw, 30px);
+  color: var(--text);
+  text-shadow:
+    3px 3px 0 var(--pink),
+    6px 6px 0 rgba(200,128,216,0.25);
+  letter-spacing: 3px;
+}
+
+.star-spin {
+  font-size: 26px;
+  color: var(--lavender-deep);
+  display: inline-block;
+  animation: star-spin 4s ease-in-out infinite;
+}
+
+@keyframes star-spin {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50%       { transform: rotate(180deg) scale(1.25); }
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-light);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+/* ── RAINBOW BAR ── */
+.rainbow-bar {
+  height: 7px;
+  background: repeating-linear-gradient(
+    90deg,
+    #FFB7C5 0px, #FFB7C5 16px,
+    #FFD6A0 16px, #FFD6A0 32px,
+    #FFF0A0 32px, #FFF0A0 48px,
+    #B5EAD7 48px, #B5EAD7 64px,
+    #C7E5F8 64px, #C7E5F8 80px,
+    #E8D5F0 80px, #E8D5F0 96px
+  );
+  margin-top: 8px;
+}
+
+/* ── MAIN LAYOUT ── */
+main {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 24px 16px 32px;
+}
+
+.maker-wrapper {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── DOLL COLUMN ── */
+.doll-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* ── DOLL FRAME ── */
+.doll-frame {
+  background: linear-gradient(145deg, #FFF0F8, var(--lavender), var(--blue));
+  border: 3px solid var(--lavender-mid);
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow:
+    5px 5px 0 var(--lavender-deep),
+    10px 10px 0 rgba(200,128,216,0.18);
+  position: relative;
+  animation: gentle-float 5s ease-in-out infinite;
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+.frame-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: var(--text);
+  background: var(--pink);
+  border: 2px solid var(--pink-deep);
+  border-radius: 20px;
+  padding: 4px 14px;
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+/* ── DOLL DISPLAY ── */
+#doll-display {
+  position: relative;
+  width: 200px;
+  height: 280px;
+  background: transparent;
+}
+
+.doll-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 280px;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+#layer-base-body { z-index: 1; }
+#layer-bottom    { z-index: 2; }
+#layer-top       { z-index: 3; }
+#layer-base-head { z-index: 4; }
+#layer-hair      { z-index: 5; }
+#layer-accessory { z-index: 6; }
+/* Pet sits in front of the doll (lower-left corner, y>190 so no face overlap) */
+#layer-pet       { z-index: 7; }
+
+/* ── BUTTONS ── */
+.doll-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pixel-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  padding: 9px 13px;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.12);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.pixel-btn span { font-size: 12px; }
+
+.pixel-btn:hover  { filter: brightness(1.06); }
+.pixel-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 rgba(0,0,0,0.12); }
+
+.btn-pink     { background: var(--pink);     border-color: var(--pink-deep);      color: var(--white); }
+.btn-lavender { background: var(--lavender); border-color: var(--lavender-deep);  color: var(--text); }
+.btn-mint     { background: var(--mint);     border-color: var(--mint-deep);      color: var(--text); }
+
+/* ── SELECTION SUMMARY ── */
+.selection-display {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  color: var(--text-light);
+  text-align: center;
+  line-height: 2;
+  min-height: 30px;
+}
+
+/* ── WARDROBE COLUMN ── */
+.wardrobe-column {
+  flex: 1;
+  min-width: 280px;
+  max-width: 380px;
+}
+
+.wardrobe-frame {
+  background: var(--white);
+  border: 3px solid var(--lavender);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow:
+    5px 5px 0 var(--lavender),
+    10px 10px 0 rgba(232,213,240,0.28);
+}
+
+/* ── CATEGORY TABS ── */
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.tab-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6.5px;
+  padding: 7px 9px;
+  border: 2px solid var(--lavender);
+  border-radius: 8px;
+  background: var(--cream);
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.3px;
+}
+.tab-btn:hover:not(.active) { background: var(--lavender); color: var(--text); }
+.tab-btn.active {
+  background: var(--pink);
+  border-color: var(--pink-deep);
+  color: var(--white);
+  box-shadow: 2px 2px 0 var(--pink-deep);
+}
+
+/* ── ITEM GRID ── */
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-height: 348px;
+  overflow-y: auto;
+  padding: 3px 3px 6px 3px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--pink) var(--lavender);
+}
+
+.item-grid::-webkit-scrollbar       { width: 7px; }
+.item-grid::-webkit-scrollbar-track { background: var(--lavender); border-radius: 4px; }
+.item-grid::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 4px; }
+
+/* ── ITEM CARDS ── */
+.item-card {
+  background: var(--cream);
+  border: 2px solid var(--lavender);
+  border-radius: 12px;
+  padding: 7px 5px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  user-select: none;
+}
+
+.item-card:hover {
+  background: var(--pink-light);
+  border-color: var(--pink);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 0 var(--pink);
+}
+
+.item-card.selected {
+  background: var(--lavender);
+  border-color: var(--lavender-deep);
+  box-shadow: 0 0 0 2px var(--lavender-deep), 2px 2px 0 var(--lavender-deep);
+}
+
+.item-card.none-card {
+  border-style: dashed;
+  background: white;
+}
+.item-card.none-card:hover { border-color: var(--pink); }
+
+.item-preview {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.item-preview-icon {
+  font-size: 32px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.item-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5.5px;
+  color: var(--text);
+  line-height: 1.5;
+  word-break: break-word;
+  text-align: center;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  background: linear-gradient(135deg, var(--blue), var(--lavender), var(--pink-light));
+  border-top: 4px solid var(--pink);
+  margin-top: 8px;
+}
+
+.footer-inner {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.heart-beat {
+  display: inline-block;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.3); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.2); }
+  70%       { transform: scale(1); }
+}
+
+.footer-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badge {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 2px solid;
+}
+.pink-badge     { background: var(--pink);     border-color: var(--pink-deep);     color: white; }
+.mint-badge     { background: var(--mint);     border-color: var(--mint-deep);     color: var(--text); }
+.lavender-badge { background: var(--lavender); border-color: var(--lavender-deep); color: var(--text); }
+
+.bottom-deco { margin-top: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .maker-wrapper { flex-direction: column; align-items: center; }
+  .wardrobe-column { width: 100%; max-width: 100%; }
+  h1 { font-size: 16px; }
+  .item-grid { grid-template-columns: repeat(3, 1fr); max-height: 260px; }
+}
