@@ -323,7 +323,7 @@ document.getElementById('btn-save').addEventListener('click', async () => {
   const ctx  = out.getContext('2d');
 
   // BG colour
-  ctx.fillStyle = canvas.style.backgroundColor || '#FFB7C5';
+  ctx.fillStyle = canvas.style.backgroundColor || '#1A0A2E';
   ctx.fillRect(0, 0, out.width, out.height);
 
   // Sort items by z-index and draw in order
@@ -366,4 +366,5 @@ function drawEl(ctx, el) {
 // INIT
 // ══════════════════════════════════════
 
+canvas.style.backgroundColor = '#1A0A2E';
 buildWardrobe();
