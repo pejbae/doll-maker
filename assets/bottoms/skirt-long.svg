@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 110" width="80" height="110">
+  <!-- LONG FLOWY SKIRT (teal / mermaid colour) -->
+  <!-- Waistband -->
+  <rect x="18" y="0" width="44" height="10" rx="4" fill="#008090"/>
+  <!-- Skirt flares widely -->
+  <path d="M 16 9 Q 4 30 2 90 Q 2 102 10 108 L 70 108 Q 78 102 78 90 Q 76 30 64 9 Z" fill="#00B0A8"/>
+  <!-- Tiered layers / ripple lines -->
+  <path d="M 10 38 Q 40 44 70 38" fill="none" stroke="#008090" stroke-width="1.5" opacity="0.5"/>
+  <path d="M 6 62 Q 40 70 74 62" fill="none" stroke="#008090" stroke-width="1.5" opacity="0.5"/>
+  <path d="M 4 84 Q 40 92 76 84" fill="none" stroke="#008090" stroke-width="1.5" opacity="0.5"/>
+  <!-- Hem ruffle -->
+  <path d="M 2 104 Q 40 114 78 104" fill="none" stroke="#00D0C0" stroke-width="4" stroke-linecap="round"/>
+  <!-- Shimmer spots -->
+  <circle cx="22" cy="52" r="2"   fill="#80FFEE" opacity="0.5"/>
+  <circle cx="55" cy="60" r="1.5" fill="white"   opacity="0.5"/>
+  <circle cx="35" cy="78" r="2"   fill="#80FFEE" opacity="0.5"/>
+  <circle cx="60" cy="86" r="1.5" fill="white"   opacity="0.5"/>
+</svg>

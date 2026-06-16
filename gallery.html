@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery ~*~ Dollz Maker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="gallery-body">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-doll-left">
+        <img src="assets/base/base.svg" alt="" class="header-doll-img">
+      </div>
+      <div class="header-title-block">
+        <h1 class="site-name">Dollz Maker</h1>
+        <p class="site-tagline">~*~ make &amp; style your very own dollz ~*~</p>
+      </div>
+      <div class="header-doll-right">
+        <img src="assets/base/base.svg" alt="" class="header-doll-img flip">
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">✦ Home</a>
+      <a href="maker.html">✦ Dollmaker</a>
+      <a href="gallery.html" class="active">✦ Gallery</a>
+    </nav>
+  </header>
+
+  <div class="home-content">
+    <div class="gallery-header-box">
+      <h2>✦ Dollz Gallery ✦</h2>
+      <p>Dolls saved by visitors! Save your own from the <a href="maker.html">Dollmaker</a>.</p>
+    </div>
+
+    <div id="gallery-grid" class="gallery-grid">
+      <!-- Populated by JS from localStorage -->
+    </div>
+
+    <p id="gallery-empty" class="gallery-empty" style="display:none">
+      No dolls saved yet! <a href="maker.html">Go make one →</a>
+    </p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bar">~*~ dollz maker ~*~ made with ♡ ~*~</div>
+  </footer>
+
+  <script>
+    const grid = document.getElementById('gallery-grid');
+    const empty = document.getElementById('gallery-empty');
+    const saved = JSON.parse(localStorage.getItem('dollz-gallery') || '[]');
+
+    if (saved.length === 0) {
+      empty.style.display = 'block';
+    } else {
+      saved.forEach((entry, i) => {
+        const card = document.createElement('div');
+        card.className = 'gallery-card';
+        card.innerHTML = `
+          <img src="${entry.dataUrl}" alt="doll ${i+1}" class="gallery-doll-img">
+          <div class="gallery-card-footer">
+            <span>${entry.date || ''}</span>
+            <a href="${entry.dataUrl}" download="my-doll.png" class="dl-btn">Save ↓</a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>

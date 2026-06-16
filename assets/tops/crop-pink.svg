@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 55" width="80" height="55">
+  <!-- PINK CROP TOP -->
+  <!-- Body -->
+  <path d="M 18 8 Q 8 12 6 18 L 10 22 Q 16 14 22 16 L 22 48 L 58 48 L 58 16 Q 64 14 70 22 L 74 18 Q 72 12 62 8 Q 50 4 40 4 Q 30 4 18 8 Z" fill="#FF80A0"/>
+  <!-- Neckline (scoop neck) -->
+  <path d="M 22 8 Q 40 14 58 8" fill="none" stroke="#E0005A" stroke-width="1.5"/>
+  <!-- Hem detail -->
+  <path d="M 22 46 Q 40 50 58 46" fill="none" stroke="#E0005A" stroke-width="2"/>
+  <!-- Sleeves cap -->
+  <ellipse cx="12" cy="18" rx="8" ry="5" fill="#FF80A0"/>
+  <ellipse cx="68" cy="18" rx="8" ry="5" fill="#FF80A0"/>
+  <!-- Star print -->
+  <text x="34" y="35" font-size="12" fill="#FF4080">★</text>
+  <text x="46" y="28" font-size="8"  fill="#FF4080">★</text>
+</svg>

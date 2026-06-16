@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 45" width="55" height="45">
+  <!-- BUTTERFLY (pink and purple) -->
+  <!-- Upper left wing -->
+  <path d="M 27 22 Q 18 4 4 2 Q 0 10 4 18 Q 10 26 24 26 Z" fill="#FF80C0" opacity="0.85"/>
+  <path d="M 27 22 Q 18 4 4 2 Q 0 10 4 18 Q 10 26 24 26 Z" fill="none" stroke="#CC0080" stroke-width="1.2"/>
+  <!-- Wing vein -->
+  <path d="M 27 22 Q 16 12 6 6"  fill="none" stroke="#CC0080" stroke-width="0.7" opacity="0.5"/>
+  <path d="M 24 20 Q 14 18 6 16" fill="none" stroke="#CC0080" stroke-width="0.7" opacity="0.5"/>
+  <!-- Upper right wing -->
+  <path d="M 28 22 Q 37 4 51 2 Q 55 10 51 18 Q 45 26 31 26 Z" fill="#C080FF" opacity="0.85"/>
+  <path d="M 28 22 Q 37 4 51 2 Q 55 10 51 18 Q 45 26 31 26 Z" fill="none" stroke="#8000CC" stroke-width="1.2"/>
+  <path d="M 28 22 Q 39 12 49 6"  fill="none" stroke="#8000CC" stroke-width="0.7" opacity="0.5"/>
+  <path d="M 31 20 Q 41 18 49 16" fill="none" stroke="#8000CC" stroke-width="0.7" opacity="0.5"/>
+  <!-- Lower left wing (smaller) -->
+  <path d="M 27 24 Q 14 30 8 38 Q 12 44 20 40 Q 26 36 28 26 Z" fill="#FF80C0" opacity="0.8"/>
+  <path d="M 27 24 Q 14 30 8 38 Q 12 44 20 40 Q 26 36 28 26 Z" fill="none" stroke="#CC0080" stroke-width="1"/>
+  <!-- Lower right wing -->
+  <path d="M 28 24 Q 41 30 47 38 Q 43 44 35 40 Q 29 36 27 26 Z" fill="#C080FF" opacity="0.8"/>
+  <path d="M 28 24 Q 41 30 47 38 Q 43 44 35 40 Q 27 36 27 26 Z" fill="none" stroke="#8000CC" stroke-width="1"/>
+  <!-- Body -->
+  <ellipse cx="27" cy="23" rx="3" ry="10" fill="#1A1A3A"/>
+  <!-- Head -->
+  <circle cx="27" cy="12" r="3.5" fill="#1A1A3A"/>
+  <!-- Antennae -->
+  <line x1="25" y1="10" x2="18" y2="2" stroke="#1A1A3A" stroke-width="1" stroke-linecap="round"/>
+  <line x1="29" y1="10" x2="36" y2="2" stroke="#1A1A3A" stroke-width="1" stroke-linecap="round"/>
+  <circle cx="18" cy="2" r="2" fill="#FF80C0"/>
+  <circle cx="36" cy="2" r="2" fill="#C080FF"/>
+  <!-- Wing spots -->
+  <circle cx="14" cy="16" r="3"   fill="#FFE0FF" opacity="0.6"/>
+  <circle cx="40" cy="16" r="3"   fill="#FFE0FF" opacity="0.6"/>
+  <circle cx="16" cy="34" r="2.5" fill="#FFE0FF" opacity="0.5"/>
+  <circle cx="38" cy="34" r="2.5" fill="#FFE0FF" opacity="0.5"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 35" width="80" height="35">
+  <!-- PLATFORM SHOES (chunky Y2K soles) -->
+  <!-- Left shoe -->
+  <rect x="4"  y="4"  width="32" height="16" rx="4" fill="#1A1A1A"/>
+  <rect x="2"  y="18" width="36" height="12" rx="3" fill="#333"/>
+  <rect x="2"  y="24" width="36" height="6"  rx="3" fill="#555"/>
+  <!-- Left shoe shine -->
+  <ellipse cx="14" cy="10" rx="6" ry="3" fill="#444" opacity="0.5"/>
+  <!-- Right shoe -->
+  <rect x="44" y="4"  width="32" height="16" rx="4" fill="#1A1A1A"/>
+  <rect x="42" y="18" width="36" height="12" rx="3" fill="#333"/>
+  <rect x="42" y="24" width="36" height="6"  rx="3" fill="#555"/>
+  <ellipse cx="54" cy="10" rx="6" ry="3" fill="#444" opacity="0.5"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" width="70" height="70">
+  <!-- UPDO / BUN HAIRSTYLE (red/auburn) -->
+  <!-- Slicked back sides -->
+  <ellipse cx="35" cy="30" rx="24" ry="20" fill="#A02010"/>
+  <!-- Main bun at top -->
+  <circle cx="35" cy="14" r="16" fill="#A02010"/>
+  <circle cx="35" cy="14" r="12" fill="#B83020"/>
+  <!-- Bun swirl -->
+  <path d="M 35 4 Q 42 8 44 14 Q 42 20 36 22 Q 30 20 28 14 Q 30 8 35 4" fill="none" stroke="#8A1808" stroke-width="1.5" opacity="0.5"/>
+  <!-- Highlight on bun -->
+  <ellipse cx="30" cy="10" rx="6" ry="4" fill="#C84030" opacity="0.5"/>
+  <!-- Wisp strands framing face -->
+  <path d="M 12 28 Q 8 36 10 44" fill="none" stroke="#A02010" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 58 28 Q 62 36 60 44" fill="none" stroke="#A02010" stroke-width="4" stroke-linecap="round"/>
+  <!-- Hair pins (decorative) -->
+  <line x1="26" y1="18" x2="20" y2="10" stroke="#E8C030" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="20" cy="10" r="2.5" fill="#E8C030"/>
+</svg>

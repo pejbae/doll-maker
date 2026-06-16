@@ -3,96 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>✦ Kawaii Dollz Maker ✦</title>
+  <title>~*~ Dollz Maker ~*~</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home-body">
 
-  <header>
-    <div class="header-deco top-deco">
-      <span>♡</span><span>★</span><span>♡</span><span>★</span><span>♡</span><span>★</span><span>♡</span><span>★</span><span>♡</span><span>★</span><span>♡</span><span>★</span><span>♡</span>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-doll-left">
+        <img src="assets/base/base.svg" alt="" class="header-doll-img">
+      </div>
+      <div class="header-title-block">
+        <h1 class="site-name">Dollz Maker</h1>
+        <p class="site-tagline">~*~ make &amp; style your very own dollz ~*~</p>
+      </div>
+      <div class="header-doll-right">
+        <img src="assets/base/base.svg" alt="" class="header-doll-img flip">
+      </div>
     </div>
-    <div class="site-title">
-      <span class="star-spin">✦</span>
-      <h1>DOLLZ MAKER</h1>
-      <span class="star-spin">✦</span>
-    </div>
-    <p class="subtitle">˚₊· ͟͟͞͞➳ dress up your kawaii doll ˚₊·</p>
-    <div class="rainbow-bar"></div>
+    <nav class="site-nav">
+      <a href="index.html" class="active">✦ Home</a>
+      <a href="maker.html">✦ Dollmaker</a>
+      <a href="gallery.html">✦ Gallery</a>
+    </nav>
   </header>
 
-  <main>
-    <div class="maker-wrapper">
-
-      <!-- LEFT: Doll Display -->
-      <div class="doll-column">
-        <div class="doll-frame">
-          <div class="frame-label">✦ YOUR DOLL ✦</div>
-          <div id="doll-display">
-            <img id="layer-pet"       class="doll-layer" src="" alt="" style="display:none">
-            <img id="layer-base-body" class="doll-layer" src="assets/base-body.svg" alt="doll body">
-            <img id="layer-bottom"    class="doll-layer" src="" alt="" style="display:none">
-            <img id="layer-top"       class="doll-layer" src="" alt="" style="display:none">
-            <img id="layer-base-head" class="doll-layer" src="assets/base-head.svg" alt="doll head">
-            <img id="layer-hair"      class="doll-layer" src="" alt="" style="display:none">
-            <img id="layer-accessory" class="doll-layer" src="" alt="" style="display:none">
-          </div>
-        </div>
-
-        <div class="doll-buttons">
-          <button id="btn-random" class="pixel-btn btn-pink">
-            <span>🎲</span> RANDOM
-          </button>
-          <button id="btn-clear" class="pixel-btn btn-lavender">
-            <span>🗑</span> CLEAR
-          </button>
-          <button id="btn-save" class="pixel-btn btn-mint">
-            <span>💾</span> SAVE
-          </button>
-        </div>
-
-        <div class="selection-display">
-          <div id="selection-summary"></div>
-        </div>
-      </div>
-
-      <!-- RIGHT: Wardrobe -->
-      <div class="wardrobe-column">
-        <div class="wardrobe-frame">
-          <div class="frame-label">✦ WARDROBE ✦</div>
-
-          <div class="category-tabs" role="tablist">
-            <button class="tab-btn active" data-category="hair"        role="tab">💇 HAIR</button>
-            <button class="tab-btn"        data-category="tops"        role="tab">👗 TOPS</button>
-            <button class="tab-btn"        data-category="bottoms"     role="tab">🩱 BTMS</button>
-            <button class="tab-btn"        data-category="accessories" role="tab">✨ ACCS</button>
-            <button class="tab-btn"        data-category="pets"        role="tab">🐾 PETS</button>
-          </div>
-
-          <div class="item-grid" id="item-grid" role="listbox"></div>
-        </div>
-      </div>
-
+  <div class="home-content">
+    <div class="welcome-box">
+      <h2>✦ Welcome! ✦</h2>
+      <p>
+        Welcome to <strong>Dollz Maker</strong>! Here you can dress up your very own doll
+        using our drag-and-drop maker. Mix and match hair, outfits, shoes, and accessories
+        — then save your creation!
+      </p>
+      <a href="maker.html" class="big-btn">✦ Go to Dollmaker ✦</a>
     </div>
-  </main>
 
-  <footer>
-    <div class="rainbow-bar"></div>
-    <div class="footer-inner">
-      <p>made with <span class="heart-beat">💖</span> · kawaii dollz maker · 2024</p>
-      <div class="footer-badges">
-        <span class="badge pink-badge">kawaii!</span>
-        <span class="badge mint-badge">pixel love</span>
-        <span class="badge lavender-badge">dress up!</span>
+    <div class="home-columns">
+      <div class="home-card">
+        <h3>🌟 Dollmaker</h3>
+        <p>Drag and drop items onto your doll. Reposition everything. Save as PNG to keep your creation!</p>
+        <a href="maker.html" class="link-btn">Open Maker →</a>
+      </div>
+      <div class="home-card">
+        <h3>🖼 Gallery</h3>
+        <p>Browse finished dolls made by visitors. Get inspired or adopt a doll to use on your page!</p>
+        <a href="gallery.html" class="link-btn">View Gallery →</a>
+      </div>
+      <div class="home-card">
+        <h3>💌 About</h3>
+        <p>This site is a love letter to early 2000s dollz makers. More items coming soon!</p>
+        <span class="link-btn muted">More info ↓</span>
       </div>
     </div>
-    <div class="header-deco bottom-deco">
-      <span>★</span><span>♡</span><span>★</span><span>♡</span><span>★</span><span>♡</span><span>★</span><span>♡</span><span>★</span><span>♡</span><span>★</span><span>♡</span><span>★</span>
+
+    <div class="marquee-box">
+      <marquee>✦ new items added regularly ✦ save your doll as a PNG ✦ drag and drop to style ✦ share with friends ✦</marquee>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bar">
+      ~*~ dollz maker ~*~ made with ♡ ~*~
     </div>
   </footer>
 
-  <script src="maker.js"></script>
 </body>
 </html>

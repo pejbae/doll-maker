@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>~*~ Dollz Maker ~*~</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Arial+Rounded+MT+Bold&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="maker-body">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-doll-left">
+        <img src="assets/base/base.svg" alt="" class="header-doll-img">
+      </div>
+      <div class="header-title-block">
+        <h1 class="site-name">Dollz Maker</h1>
+        <p class="site-tagline">~*~ make &amp; style your very own dollz ~*~</p>
+      </div>
+      <div class="header-doll-right">
+        <img src="assets/base/base.svg" alt="" class="header-doll-img flip">
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">✦ Home</a>
+      <a href="maker.html" class="active">✦ Dollmaker</a>
+      <a href="gallery.html">✦ Gallery</a>
+    </nav>
+  </header>
+
+  <!-- MAKER LAYOUT -->
+  <div class="maker-layout">
+
+    <!-- LEFT: Item Tray -->
+    <aside class="item-tray">
+      <div class="tray-header">Wardrobe</div>
+      <div class="tray-tabs" id="tray-tabs">
+        <button class="tray-tab active" data-cat="hair">Hair</button>
+        <button class="tray-tab" data-cat="tops">Tops</button>
+        <button class="tray-tab" data-cat="bottoms">Bottoms</button>
+        <button class="tray-tab" data-cat="shoes">Shoes</button>
+        <button class="tray-tab" data-cat="accessories">Accs</button>
+        <button class="tray-tab" data-cat="pets">Pets</button>
+      </div>
+      <div class="tray-items" id="tray-items">
+        <!-- Populated by maker.js -->
+      </div>
+      <p class="tray-hint">↳ drag items onto your doll</p>
+    </aside>
+
+    <!-- CENTER: Canvas -->
+    <main class="canvas-column">
+      <div class="canvas-toolbar">
+        <button class="tool-btn" id="btn-undo" title="Remove last placed item">↩ Undo</button>
+        <button class="tool-btn" id="btn-clear" title="Remove all items">✕ Clear</button>
+        <button class="tool-btn" id="btn-front" title="Bring selected item to front">▲ Front</button>
+        <button class="tool-btn" id="btn-back" title="Send selected item behind">▼ Back</button>
+        <button class="tool-btn danger" id="btn-remove" title="Remove selected item">🗑 Remove</button>
+      </div>
+
+      <div class="canvas-frame">
+        <div id="canvas" class="maker-canvas">
+          <!-- Doll base — fixed, not draggable -->
+          <img id="doll-base" class="doll-base" src="assets/base/base.svg" alt="doll base"
+               draggable="false">
+          <!-- Dropped items injected here by JS -->
+        </div>
+      </div>
+
+      <div class="canvas-footer">
+        <div class="skin-swatches">
+          <span class="swatch-label">Skin:</span>
+          <button class="skin-btn" data-src="assets/base/base.svg"       style="background:#FFD5A8" title="Light"></button>
+          <button class="skin-btn" data-src="assets/base/base-medium.svg" style="background:#C9855A" title="Medium"></button>
+          <button class="skin-btn" data-src="assets/base/base-dark.svg"   style="background:#7B4020" title="Dark"></button>
+        </div>
+        <div class="bg-swatches">
+          <span class="swatch-label">BG:</span>
+          <button class="bg-btn" data-color="#FFFFFF"  style="background:#FFFFFF; border-color:#ccc"></button>
+          <button class="bg-btn" data-color="#FFB7C5"  style="background:#FFB7C5"></button>
+          <button class="bg-btn" data-color="#E8D5F0"  style="background:#E8D5F0"></button>
+          <button class="bg-btn" data-color="#C7E5F8"  style="background:#C7E5F8"></button>
+          <button class="bg-btn" data-color="#B5EAD7"  style="background:#B5EAD7"></button>
+          <button class="bg-btn" data-color="#FFF0C0"  style="background:#FFF0C0"></button>
+          <button class="bg-btn" data-color="#000000"  style="background:#000000"></button>
+        </div>
+        <button id="btn-save" class="save-btn">💾 Save PNG</button>
+      </div>
+
+      <p class="canvas-hint">
+        Drag items from the wardrobe · Drag to reposition · Double-click to remove
+      </p>
+    </main>
+
+  </div>
+
+  <!-- DRAG GHOST (injected by JS, follows cursor) -->
+  <img id="drag-ghost" class="drag-ghost" src="" alt="" draggable="false">
+
+  <footer class="site-footer">
+    <div class="footer-bar">
+      ~*~ dollz maker ~*~ made with ♡ ~*~
+    </div>
+  </footer>
+
+  <script src="maker.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 95" width="75" height="95">
+  <!-- HIGH PONYTAIL (dark brown) -->
+  <!-- Head coverage -->
+  <ellipse cx="37" cy="20" rx="24" ry="20" fill="#3A1A08"/>
+  <!-- Ponytail hanging down from top-back -->
+  <path d="M 38 8 Q 56 14 60 30 Q 64 48 58 68 Q 54 82 58 92" fill="none" stroke="#3A1A08" stroke-width="14" stroke-linecap="round"/>
+  <!-- Ponytail highlight -->
+  <path d="M 42 10 Q 58 18 62 34 Q 66 52 60 72 Q 58 82 60 90" fill="none" stroke="#6A3A18" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  <!-- Hair tie / scrunchie -->
+  <circle cx="40" cy="8" r="6" fill="none" stroke="#FF69B4" stroke-width="4"/>
+  <circle cx="40" cy="8" r="6" fill="none" stroke="#FF90C0" stroke-width="2"/>
+  <!-- Fringe -->
+  <path d="M 14 16 Q 37 8 60 16 Q 56 30 48 32 Q 37 34 26 32 Q 18 30 14 16 Z" fill="#3A1A08"/>
+  <!-- Highlight on head -->
+  <path d="M 28 10 Q 30 22 28 32" fill="none" stroke="#6A3A18" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+</svg>

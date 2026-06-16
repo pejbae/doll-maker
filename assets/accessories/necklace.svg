@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 20" width="60" height="20">
+  <!-- CHOKER / CHAIN NECKLACE -->
+  <!-- Chain arc -->
+  <path d="M 8 6 Q 30 14 52 6" fill="none" stroke="#C0A030" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Chain links -->
+  <circle cx="12" cy="8"  r="1.5" fill="#E0C040"/>
+  <circle cx="18" cy="10" r="1.5" fill="#E0C040"/>
+  <circle cx="24" cy="12" r="1.5" fill="#E0C040"/>
+  <circle cx="30" cy="13" r="1.5" fill="#E0C040"/>
+  <circle cx="36" cy="12" r="1.5" fill="#E0C040"/>
+  <circle cx="42" cy="10" r="1.5" fill="#E0C040"/>
+  <circle cx="48" cy="8"  r="1.5" fill="#E0C040"/>
+  <!-- Heart pendant -->
+  <path d="M 25 14 Q 27 10 30 11 Q 33 10 35 14 Q 33 18 30 20 Q 27 18 25 14 Z" fill="#FF4080"/>
+  <path d="M 27 13 Q 28 11 30 12" fill="none" stroke="#FF80A0" stroke-width="1" opacity="0.6"/>
+</svg>

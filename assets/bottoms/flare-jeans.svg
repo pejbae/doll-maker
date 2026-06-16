@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 120" width="80" height="120">
+  <!-- LOW-RISE FLARE JEANS (Y2K classic — dark denim) -->
+  <!-- Waistband -->
+  <rect x="16" y="0" width="48" height="10" rx="3" fill="#1A2E6A"/>
+  <!-- Belt loops -->
+  <rect x="20" y="-1" width="4" height="10" rx="1" fill="#142260"/>
+  <rect x="38" y="-1" width="4" height="10" rx="1" fill="#142260"/>
+  <rect x="56" y="-1" width="4" height="10" rx="1" fill="#142260"/>
+  <!-- Button/clasp -->
+  <circle cx="40" cy="5" r="3" fill="#C0C0C0"/>
+  <!-- Fly -->
+  <line x1="40" y1="8" x2="40" y2="24" stroke="#142260" stroke-width="1.5" opacity="0.6"/>
+  <!-- Left leg (flares out at bottom) -->
+  <path d="M 16 10 Q 14 40 12 60 Q 8 80 4 116 L 22 116 Q 24 80 28 60 Q 32 40 34 10 Z" fill="#2A3E8A"/>
+  <!-- Right leg -->
+  <path d="M 64 10 Q 66 40 68 60 Q 72 80 76 116 L 58 116 Q 56 80 52 60 Q 48 40 46 10 Z" fill="#2A3E8A"/>
+  <!-- Center seam -->
+  <line x1="40" y1="24" x2="40" y2="60" stroke="#142260" stroke-width="1.5" opacity="0.5"/>
+  <!-- Pocket stitching left -->
+  <path d="M 18 16 Q 16 24 18 30 Q 24 34 32 30" fill="none" stroke="#1A2E6A" stroke-width="1.2"/>
+  <!-- Pocket stitching right -->
+  <path d="M 62 16 Q 64 24 62 30 Q 56 34 48 30" fill="none" stroke="#1A2E6A" stroke-width="1.2"/>
+  <!-- Fade/wash effect on thighs -->
+  <ellipse cx="22" cy="32" rx="8" ry="10" fill="#3A5AB0" opacity="0.3"/>
+  <ellipse cx="58" cy="32" rx="8" ry="10" fill="#3A5AB0" opacity="0.3"/>
+  <!-- Flared hem detail -->
+  <path d="M 4 112 Q 13 118 22 116" fill="none" stroke="#1A2E6A" stroke-width="2"/>
+  <path d="M 58 116 Q 67 118 76 112" fill="none" stroke="#1A2E6A" stroke-width="2"/>
+  <!-- Embroidery on back pocket / hem -->
+  <text x="8"  y="106" font-size="7" fill="#C0A0FF" opacity="0.7">★</text>
+  <text x="60" y="106" font-size="7" fill="#C0A0FF" opacity="0.7">★</text>
+</svg>

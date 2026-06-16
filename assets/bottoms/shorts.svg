@@ -1,52 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
-  <!-- HIGH-WAISTED PASTEL DENIM SHORTS -->
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 50" width="80" height="50">
+  <!-- TINY DENIM SHORTS (Y2K) -->
   <!-- Waistband -->
-  <rect x="66" y="218" width="68" height="12" rx="4" fill="#7ABAE8"/>
-
-  <!-- Button/clasp on waistband -->
-  <circle cx="100" cy="224" r="4"   fill="#5A9AC8"/>
-  <circle cx="100" cy="224" r="2.5" fill="#8AC8F0"/>
-
-  <!-- Shorts body -->
+  <rect x="14" y="0" width="52" height="10" rx="3" fill="#3A5A9A"/>
+  <!-- Button -->
+  <circle cx="40" cy="5" r="2.5" fill="#C0C0C0"/>
   <!-- Left leg -->
-  <path d="M 66 228 Q 64 250 68 264 L 97 264 Q 100 250 100 228 Z" fill="#88C0E8"/>
+  <path d="M 14 10 Q 12 24 14 42 L 38 42 Q 38 28 36 10 Z" fill="#4A6AB0"/>
   <!-- Right leg -->
-  <path d="M 134 228 Q 136 250 132 264 L 103 264 Q 100 250 100 228 Z" fill="#88C0E8"/>
-
-  <!-- Center seam -->
-  <line x1="100" y1="228" x2="100" y2="264" stroke="#6AA8D8" stroke-width="2"/>
-
-  <!-- Denim texture lines - left side -->
-  <line x1="72" y1="230" x2="74" y2="262" stroke="#6AA8D8" stroke-width="1" opacity="0.5"/>
-  <line x1="80" y1="229" x2="82" y2="262" stroke="#6AA8D8" stroke-width="1" opacity="0.5"/>
-  <line x1="88" y1="228" x2="90" y2="262" stroke="#6AA8D8" stroke-width="1" opacity="0.5"/>
-  <!-- Right side -->
-  <line x1="112" y1="228" x2="110" y2="262" stroke="#6AA8D8" stroke-width="1" opacity="0.5"/>
-  <line x1="120" y1="229" x2="118" y2="262" stroke="#6AA8D8" stroke-width="1" opacity="0.5"/>
-  <line x1="128" y1="230" x2="126" y2="262" stroke="#6AA8D8" stroke-width="1" opacity="0.5"/>
-
-  <!-- Pocket outline left -->
-  <path d="M 71 234 Q 68 234 67 240 Q 67 246 72 248 L 84 248 Q 88 246 88 240 Q 88 234 84 234 Z" fill="none" stroke="#6AA8D8" stroke-width="1.5"/>
-  <!-- Pocket outline right -->
-  <path d="M 112 234 Q 116 234 116 240 Q 116 246 112 248 L 128 248 Q 133 246 133 240 Q 133 234 128 234 Z" fill="none" stroke="#6AA8D8" stroke-width="1.5"/>
-
-  <!-- Short hem (frayed look) -->
-  <line x1="68" y1="264" x2="97"  y2="264" stroke="#88C0E8" stroke-width="3"/>
-  <line x1="103" y1="264" x2="132" y2="264" stroke="#88C0E8" stroke-width="3"/>
-  <!-- Fringe lines left -->
-  <line x1="70" y1="264" x2="69"  y2="270" stroke="#6AA8D8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="75" y1="264" x2="74"  y2="269" stroke="#6AA8D8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="80" y1="264" x2="80"  y2="271" stroke="#6AA8D8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="85" y1="264" x2="85"  y2="269" stroke="#6AA8D8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="91" y1="264" x2="91"  y2="270" stroke="#6AA8D8" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Fringe lines right -->
-  <line x1="109" y1="264" x2="109" y2="270" stroke="#6AA8D8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="115" y1="264" x2="115" y2="269" stroke="#6AA8D8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="120" y1="264" x2="120" y2="271" stroke="#6AA8D8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="125" y1="264" x2="125" y2="269" stroke="#6AA8D8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="130" y1="264" x2="130" y2="270" stroke="#6AA8D8" stroke-width="1.5" stroke-linecap="round"/>
-
-  <!-- Star embroidery patch on left pocket -->
-  <text x="71" y="244" font-size="9" fill="#FFB7C5" opacity="0.9">★</text>
+  <path d="M 66 10 Q 68 24 66 42 L 42 42 Q 42 28 44 10 Z" fill="#4A6AB0"/>
+  <!-- Crotch seam -->
+  <path d="M 36 10 Q 40 20 44 10" fill="none" stroke="#3A5A9A" stroke-width="1.5"/>
+  <!-- Fringe/cutoff hem details -->
+  <line x1="16" y1="42" x2="15" y2="48" stroke="#3A5A9A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="22" y1="42" x2="22" y2="49" stroke="#3A5A9A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="28" y1="42" x2="28" y2="48" stroke="#3A5A9A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="35" y1="42" x2="35" y2="49" stroke="#3A5A9A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="45" y1="42" x2="45" y2="48" stroke="#3A5A9A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="52" y1="42" x2="52" y2="49" stroke="#3A5A9A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="58" y1="42" x2="58" y2="48" stroke="#3A5A9A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="64" y1="42" x2="64" y2="49" stroke="#3A5A9A" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Pocket -->
+  <path d="M 18 14 Q 16 22 18 28 Q 24 32 32 28" fill="none" stroke="#3A5A9A" stroke-width="1.2"/>
+  <!-- Star patch -->
+  <text x="52" y="30" font-size="10" fill="#80A0FF" opacity="0.7">★</text>
 </svg>

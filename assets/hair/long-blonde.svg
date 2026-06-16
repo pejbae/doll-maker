@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 100" width="80" height="100">
+  <!-- LONG STRAIGHT BLONDE HAIR -->
+  <rect x="22" y="8" width="36" height="92" rx="6" fill="#E8C040"/>
+  <rect x="14" y="12" width="12" height="90" rx="5" fill="#E8C040"/>
+  <rect x="54" y="12" width="12" height="90" rx="5" fill="#E8C040"/>
+  <ellipse cx="40" cy="12" rx="22" ry="12" fill="#E8C040"/>
+  <path d="M 18 8 Q 40 2 62 8 Q 58 22 50 24 Q 40 26 30 24 Q 22 22 18 8 Z" fill="#E8C040"/>
+  <!-- Centre part line -->
+  <line x1="40" y1="2" x2="40" y2="26" stroke="#D0A820" stroke-width="1.5" opacity="0.5"/>
+  <!-- Highlights -->
+  <path d="M 30 4 Q 32 24 30 50" fill="none" stroke="#FFF080" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M 44 2 Q 46 22 44 48" fill="none" stroke="#FFF080" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+</svg>

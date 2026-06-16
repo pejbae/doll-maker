@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 35" width="80" height="35">
+  <!-- STRAPPY HEELS (pink) -->
+  <!-- Left heel -->
+  <path d="M 6 8 Q 8 4 20 4 Q 30 4 34 8 L 34 18 Q 28 22 22 22 L 6 22 Z" fill="#FF69B4"/>
+  <rect x="24" y="18" width="4" height="14" rx="1" fill="#FF69B4"/>
+  <ellipse cx="16" cy="31" rx="10" ry="3" fill="#FF69B4"/>
+  <!-- Strap -->
+  <rect x="6"  y="12" width="28" height="4" rx="2" fill="#E0005A"/>
+  <!-- Shine -->
+  <ellipse cx="16" cy="8" rx="6" ry="2.5" fill="#FF90C0" opacity="0.5"/>
+  <!-- Right heel -->
+  <path d="M 46 8 Q 48 4 60 4 Q 70 4 74 8 L 74 18 Q 68 22 62 22 L 46 22 Z" fill="#FF69B4"/>
+  <rect x="64" y="18" width="4" height="14" rx="1" fill="#FF69B4"/>
+  <ellipse cx="56" cy="31" rx="10" ry="3" fill="#FF69B4"/>
+  <rect x="46" y="12" width="28" height="4" rx="2" fill="#E0005A"/>
+  <ellipse cx="56" cy="8" rx="6" ry="2.5" fill="#FF90C0" opacity="0.5"/>
+</svg>

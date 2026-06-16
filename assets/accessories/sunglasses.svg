@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 22" width="60" height="22">
+  <!-- TINTED SUNGLASSES (Y2K wraparound / shield) -->
+  <!-- Lens left -->
+  <path d="M 4 4 Q 2 2 6 2 L 26 2 Q 30 2 30 8 L 30 16 Q 28 20 22 20 L 8 20 Q 2 20 2 14 Z" fill="#FF80C0" opacity="0.6"/>
+  <path d="M 4 4 Q 2 2 6 2 L 26 2 Q 30 2 30 8 L 30 16 Q 28 20 22 20 L 8 20 Q 2 20 2 14 Z" fill="none" stroke="#CC0060" stroke-width="1.5"/>
+  <!-- Bridge -->
+  <line x1="30" y1="8" x2="30" y2="8" stroke="#CC0060" stroke-width="2"/>
+  <path d="M 29 8 Q 30 6 31 8" fill="none" stroke="#CC0060" stroke-width="2"/>
+  <!-- Lens right -->
+  <path d="M 56 4 Q 58 2 54 2 L 34 2 Q 30 2 30 8 L 30 16 Q 32 20 38 20 L 52 20 Q 58 20 58 14 Z" fill="#FF80C0" opacity="0.6"/>
+  <path d="M 56 4 Q 58 2 54 2 L 34 2 Q 30 2 30 8 L 30 16 Q 32 20 38 20 L 52 20 Q 58 20 58 14 Z" fill="none" stroke="#CC0060" stroke-width="1.5"/>
+  <!-- Arms -->
+  <line x1="2"  y1="8" x2="-2" y2="10" stroke="#CC0060" stroke-width="2" stroke-linecap="round"/>
+  <line x1="58" y1="8" x2="62" y2="10" stroke="#CC0060" stroke-width="2" stroke-linecap="round"/>
+  <!-- Lens shine -->
+  <path d="M 6 5 Q 10 3 14 5"  fill="none" stroke="white" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+  <path d="M 34 5 Q 38 3 42 5" fill="none" stroke="white" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+</svg>
