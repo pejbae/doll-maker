@@ -13,13 +13,16 @@
   --white:     #FFFFFF;
   --text:      #660066;
   --text-lt:   #AA44AA;
-  --border:    #FF69B4;
-  --canvas-w:  400px;
-  --canvas-h:  500px;
 }
 
-/* ── PAGE ── */
+/* ── PAGE: body is the full-height flex shell ── */
+html, body {
+  height: 100%;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
   background: var(--pink-bg);
   background-image:
     radial-gradient(circle, #FFD6E8 1.5px, transparent 1.5px),
@@ -28,19 +31,20 @@ body {
   background-position: 0 0, 10px 10px;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--text);
-  min-height: 100vh;
+  overflow: hidden;
 }
 
 /* ── HEADER ── */
 header {
+  flex-shrink: 0;
   background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 50%, var(--pink) 100%);
-  padding: 14px 20px 0;
+  padding: 10px 20px 0;
   text-align: center;
   box-shadow: 0 3px 0 var(--hot);
 }
 
 .site-title {
-  font-size: clamp(22px, 5vw, 38px);
+  font-size: clamp(20px, 4vw, 34px);
   font-weight: 900;
   font-style: italic;
   color: var(--white);
@@ -50,10 +54,9 @@ header {
 
 .site-sub {
   color: rgba(255,255,255,0.85);
-  font-size: 13px;
+  font-size: 12px;
   font-style: italic;
-  margin-top: 4px;
-  margin-bottom: 10px;
+  margin: 3px 0 8px;
 }
 
 /* ── RAINBOW STRIP ── */
@@ -70,12 +73,12 @@ header {
   );
 }
 
-/* ── LAYOUT ── */
+/* ── MAKER LAYOUT: fills remaining body height ── */
 .maker-layout {
+  flex: 1;
   display: flex;
-  gap: 0;
-  height: calc(100vh - 108px);
-  min-height: 540px;
+  min-height: 0;   /* critical: allows flex children to shrink below content size */
+  overflow: hidden;
 }
 
 /* ── WARDROBE ── */
@@ -86,10 +89,11 @@ header {
   border-right: 3px solid var(--pink);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  min-height: 0;
 }
 
 .wardrobe-title {
+  flex-shrink: 0;
   background: var(--pink);
   color: white;
   font-weight: 900;
@@ -97,19 +101,18 @@ header {
   text-align: center;
   padding: 7px;
   letter-spacing: 1px;
-  flex-shrink: 0;
 }
 
-/* Category tabs – vertical pills */
+/* Category tabs – vertical scrollable list */
 .cat-tabs {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 6px;
+  padding: 5px;
   background: #FFF0F8;
   border-bottom: 2px solid var(--pink-lt);
-  flex-shrink: 0;
-  max-height: 220px;
+  max-height: 200px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--pink) #FFF0F8;
@@ -122,18 +125,20 @@ header {
   color: var(--text);
   font-size: 11px;
   font-weight: bold;
-  padding: 5px 10px;
+  padding: 4px 10px;
   cursor: pointer;
   text-align: left;
   transition: all 0.12s;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .cat-tab:hover  { background: var(--pink-lt); }
 .cat-tab.active { background: var(--pink); border-color: var(--hot); color: white; }
 
-/* Sprite grid */
+/* Sprite thumbnail grid */
 .sprite-grid {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
@@ -149,8 +154,8 @@ header {
 .sprite-grid::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 3px; }
 
 .sprite-thumb {
-  width: 60px;
-  height: 60px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
   cursor: grab;
   border: 2px solid transparent;
@@ -161,36 +166,41 @@ header {
   image-rendering: pixelated;
   image-rendering: -webkit-optimize-contrast;
   user-select: none;
+  flex-shrink: 0;
 }
 .sprite-thumb:hover {
   border-color: var(--pink);
-  transform: scale(1.08);
+  transform: scale(1.1);
   z-index: 2;
+  position: relative;
 }
 
 .drag-hint {
+  flex-shrink: 0;
   text-align: center;
   font-size: 10px;
   color: var(--text-lt);
   padding: 6px;
   border-top: 1px solid var(--pink-lt);
-  flex-shrink: 0;
   font-style: italic;
 }
 
 /* ── CANVAS COLUMN ── */
 .canvas-col {
   flex: 1;
+  min-height: 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 12px;
+  padding: 8px 12px;
+  gap: 7px;
   overflow: hidden;
-  gap: 8px;
 }
 
 /* ── TOOLBAR ── */
 .toolbar {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -211,7 +221,7 @@ header {
   transition: all 0.1s;
 }
 .tool-btn:hover    { background: var(--pink-lt); }
-.tool-btn:active   { transform: scale(0.96); }
+.tool-btn:active   { transform: scale(0.95); }
 .tool-btn.danger   { border-color: #E00; color: #C00; }
 .tool-btn.danger:hover { background: #FFE8E8; }
 .tool-btn.save-btn { background: var(--pink); color: white; border-color: var(--hot); }
@@ -222,6 +232,7 @@ header {
 /* ── CANVAS WRAP + CANVAS ── */
 .canvas-wrap {
   flex: 1;
+  min-height: 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -231,14 +242,16 @@ header {
 
 .canvas {
   position: relative;
-  width: var(--canvas-w);
-  height: var(--canvas-h);
-  background: var(--pink-lt);
-  border: 3px solid var(--pink);
-  box-shadow: 4px 4px 0 var(--purple), 0 0 0 1px var(--pink-lt);
+  width: 400px;
+  height: 480px;
+  flex-shrink: 0;
+  /* Start white so it's clearly visible */
+  background-color: #FFFFFF;
+  border: 4px solid var(--pink);
+  outline: 2px solid var(--purple);
+  box-shadow: 6px 6px 0 var(--purple);
   overflow: hidden;
   cursor: default;
-  flex-shrink: 0;
 }
 
 .canvas-item {
@@ -249,16 +262,17 @@ header {
   user-select: none;
   touch-action: none;
 }
-.canvas-item:active { cursor: grabbing; }
+.canvas-item:active  { cursor: grabbing; }
 .canvas-item.selected {
   outline: 2px dashed var(--hot);
   outline-offset: 2px;
 }
 
-/* ── CONTROLS BELOW CANVAS ── */
+/* ── CONTROLS ── */
 .canvas-controls {
+  flex-shrink: 0;
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
@@ -288,7 +302,7 @@ header {
 .bg-swatch.active { border-color: var(--hot); box-shadow: 0 0 0 2px var(--hot); }
 
 #scale-slider {
-  width: 90px;
+  width: 80px;
   accent-color: var(--pink);
   cursor: pointer;
 }
@@ -300,6 +314,7 @@ header {
 }
 
 .canvas-hint {
+  flex-shrink: 0;
   font-size: 10px;
   color: var(--text-lt);
   font-style: italic;
@@ -315,17 +330,19 @@ header {
   image-rendering: pixelated;
   opacity: 0.85;
   transform: translate(-50%, -50%);
+  max-width: 100px;
+  max-height: 150px;
 }
 
 /* ── FOOTER ── */
 footer {
-  background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 100%);
-  padding: 0;
+  flex-shrink: 0;
 }
 
 .credit {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 100%);
   text-align: center;
-  padding: 8px 20px;
+  padding: 7px 20px;
   font-size: 11px;
   color: rgba(255,255,255,0.85);
 }
@@ -334,8 +351,9 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
-  .maker-layout { flex-direction: column; height: auto; }
-  .wardrobe { width: 100%; height: 220px; flex-direction: row; flex-wrap: wrap; }
-  .cat-tabs { flex-direction: row; flex-wrap: wrap; max-height: none; border-right: 2px solid var(--pink-lt); }
-  :root { --canvas-w: 300px; --canvas-h: 380px; }
+  body { overflow: auto; }
+  .maker-layout { flex-direction: column; overflow: auto; }
+  .wardrobe { width: 100%; max-height: 260px; }
+  .cat-tabs { flex-direction: row; flex-wrap: wrap; max-height: 80px; }
+  .canvas { width: 300px; height: 360px; }
 }

@@ -1,6 +1,5 @@
 /* Auto-generated sprite manifest */
-'use strict';
-const SPRITE_MANIFEST = {
+var SPRITE_MANIFEST = {
   "👤 Heads & Bodies": [
     'assets/sprites/heads-bodies/arm.png',
     'assets/sprites/heads-bodies/arm2.png',
