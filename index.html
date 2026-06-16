@@ -4,108 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>~*~ Dollz Maker ~*~</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Arial+Rounded+MT+Bold&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="maker-body">
+<body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="header-doll-left">
-        <img src="assets/base/base.svg" alt="" class="header-doll-img">
-      </div>
-      <div class="header-title-block">
-        <h1 class="site-name">Dollz Maker</h1>
-        <p class="site-tagline">~*~ make &amp; style your very own dollz ~*~</p>
-      </div>
-      <div class="header-doll-right">
-        <img src="assets/base/base.svg" alt="" class="header-doll-img flip">
-      </div>
-    </div>
-    <nav class="site-nav">
-      <a href="index.html">✦ Home</a>
-      <a href="maker.html" class="active">✦ Dollmaker</a>
-      <a href="gallery.html">✦ Gallery</a>
-    </nav>
+  <header>
+    <h1 class="site-title">✦ Dollz Maker ✦</h1>
+    <p class="site-sub">~*~ drag &amp; drop to dress up your doll ~*~</p>
+    <div class="rainbow-strip"></div>
   </header>
 
-  <!-- MAKER LAYOUT -->
   <div class="maker-layout">
 
-    <!-- LEFT: Item Tray -->
-    <aside class="item-tray">
-      <div class="tray-header">Wardrobe</div>
-      <div class="tray-tabs" id="tray-tabs">
-        <button class="tray-tab active" data-cat="hair">Hair</button>
-        <button class="tray-tab" data-cat="tops">Tops</button>
-        <button class="tray-tab" data-cat="bottoms">Bottoms</button>
-        <button class="tray-tab" data-cat="shoes">Shoes</button>
-        <button class="tray-tab" data-cat="accessories">Accs</button>
-        <button class="tray-tab" data-cat="pets">Pets</button>
+    <!-- ── LEFT: Wardrobe ── -->
+    <aside class="wardrobe">
+      <div class="wardrobe-title">✧ Wardrobe ✧</div>
+
+      <div class="cat-tabs" id="cat-tabs">
+        <!-- Populated by JS from manifest -->
       </div>
-      <div class="tray-items" id="tray-items">
-        <!-- Populated by maker.js -->
+
+      <div class="sprite-grid" id="sprite-grid">
+        <!-- Populated by JS -->
       </div>
-      <p class="tray-hint">↳ drag items onto your doll</p>
+
+      <p class="drag-hint">↳ drag items onto the canvas</p>
     </aside>
 
-    <!-- CENTER: Canvas -->
-    <main class="canvas-column">
-      <div class="canvas-toolbar">
-        <button class="tool-btn" id="btn-undo" title="Remove last placed item">↩ Undo</button>
-        <button class="tool-btn" id="btn-clear" title="Remove all items">✕ Clear</button>
-        <button class="tool-btn" id="btn-front" title="Bring selected item to front">▲ Front</button>
-        <button class="tool-btn" id="btn-back" title="Send selected item behind">▼ Back</button>
-        <button class="tool-btn danger" id="btn-remove" title="Remove selected item">🗑 Remove</button>
+    <!-- ── CENTER: Canvas ── -->
+    <main class="canvas-col">
+
+      <div class="toolbar">
+        <button class="tool-btn" id="btn-undo">↩ Undo</button>
+        <button class="tool-btn" id="btn-clear">✕ Clear all</button>
+        <span class="toolbar-sep"></span>
+        <button class="tool-btn" id="btn-front">▲ Front</button>
+        <button class="tool-btn" id="btn-back">▼ Back</button>
+        <button class="tool-btn danger" id="btn-delete">🗑 Remove</button>
+        <span class="toolbar-sep"></span>
+        <button class="tool-btn save-btn" id="btn-save">💾 Save PNG</button>
       </div>
 
-      <div class="canvas-frame">
-        <div id="canvas" class="maker-canvas">
-          <!-- Doll base — fixed, not draggable -->
-          <img id="doll-base" class="doll-base" src="assets/base/base.svg" alt="doll base"
-               draggable="false">
-          <!-- Dropped items injected here by JS -->
+      <div class="canvas-wrap">
+        <div id="canvas" class="canvas">
+          <!-- Items dropped here -->
         </div>
       </div>
 
-      <div class="canvas-footer">
-        <div class="skin-swatches">
-          <span class="swatch-label">Skin:</span>
-          <button class="skin-btn" data-src="assets/base/base.svg"       style="background:#FFD5A8" title="Light"></button>
-          <button class="skin-btn" data-src="assets/base/base-medium.svg" style="background:#C9855A" title="Medium"></button>
-          <button class="skin-btn" data-src="assets/base/base-dark.svg"   style="background:#7B4020" title="Dark"></button>
+      <div class="canvas-controls">
+        <div class="control-group">
+          <span class="ctrl-label">Background:</span>
+          <button class="bg-swatch" data-color="#FFB7C5" style="background:#FFB7C5" title="Pink"></button>
+          <button class="bg-swatch" data-color="#FFFFFF" style="background:#FFFFFF;border-color:#ccc" title="White"></button>
+          <button class="bg-swatch" data-color="#E8D5F0" style="background:#E8D5F0" title="Lavender"></button>
+          <button class="bg-swatch" data-color="#C7E5F8" style="background:#C7E5F8" title="Blue"></button>
+          <button class="bg-swatch" data-color="#B5EAD7" style="background:#B5EAD7" title="Mint"></button>
+          <button class="bg-swatch" data-color="#FFF3C0" style="background:#FFF3C0" title="Yellow"></button>
+          <button class="bg-swatch" data-color="#1A0A2E" style="background:#1A0A2E" title="Dark"></button>
+          <button class="bg-swatch" data-color="#2A1A0A" style="background:#2A1A0A" title="Brown"></button>
         </div>
-        <div class="bg-swatches">
-          <span class="swatch-label">BG:</span>
-          <button class="bg-btn" data-color="#FFFFFF"  style="background:#FFFFFF; border-color:#ccc"></button>
-          <button class="bg-btn" data-color="#FFB7C5"  style="background:#FFB7C5"></button>
-          <button class="bg-btn" data-color="#E8D5F0"  style="background:#E8D5F0"></button>
-          <button class="bg-btn" data-color="#C7E5F8"  style="background:#C7E5F8"></button>
-          <button class="bg-btn" data-color="#B5EAD7"  style="background:#B5EAD7"></button>
-          <button class="bg-btn" data-color="#FFF0C0"  style="background:#FFF0C0"></button>
-          <button class="bg-btn" data-color="#000000"  style="background:#000000"></button>
+        <div class="control-group">
+          <span class="ctrl-label">Scale:</span>
+          <input type="range" id="scale-slider" min="50" max="200" value="100" step="10">
+          <span id="scale-label">100%</span>
         </div>
-        <button id="btn-save" class="save-btn">💾 Save PNG</button>
       </div>
 
       <p class="canvas-hint">
-        Drag items from the wardrobe · Drag to reposition · Double-click to remove
+        Drag from wardrobe to place · Drag on canvas to reposition · Double-click to remove · Click to select
       </p>
     </main>
 
   </div>
 
-  <!-- DRAG GHOST (injected by JS, follows cursor) -->
-  <img id="drag-ghost" class="drag-ghost" src="" alt="" draggable="false">
+  <!-- Drag ghost (follows cursor) -->
+  <img id="drag-ghost" src="" alt="" draggable="false">
 
-  <footer class="site-footer">
-    <div class="footer-bar">
-      ~*~ dollz maker ~*~ made with ♡ ~*~
-    </div>
+  <footer>
+    <div class="rainbow-strip"></div>
+    <p class="credit">
+      Pixel art sprites archived from <strong>EasyDoll.com</strong> (via web.archive.org) &mdash;
+      preserved by <a href="https://dollzmania.neocities.org" target="_blank">Dollz Mania</a>.
+      Made with ♡ as a non-commercial fan project.
+    </p>
   </footer>
 
+  <script src="assets/sprites/manifest.js"></script>
   <script src="maker.js"></script>
 </body>
 </html>

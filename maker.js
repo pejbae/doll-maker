@@ -1,454 +1,369 @@
-/* =========================================
-   DOLLZ MAKER — drag-and-drop engine
-   =========================================
-   Architecture:
-   - Items in tray are draggable source images
-   - Canvas is the drop target (free-position)
-   - Each dropped item = absolutely-positioned <img> on canvas
-   - Items can be re-dragged to reposition
-   - Double-click removes; toolbar for layer control
-   ========================================= */
+'use strict';
+/* ─────────────────────────────────────────
+   DOLLZ MAKER  –  drag-and-drop engine
+   ───────────────────────────────────────── */
 
-/* ── ITEM DATA ──────────────────────────────
-   src: the actual SVG shown on canvas
-   w/h: display size on canvas (pixels)
-   Add real PNG/SVG sprites here later.
-   ------------------------------------------ */
-const ITEMS = {
-  hair: [
-    { id: 'hair-long-brown',    name: 'Long Brown',    src: 'assets/hair/long-brown.svg',    w: 80,  h: 100 },
-    { id: 'hair-long-blonde',   name: 'Long Blonde',   src: 'assets/hair/long-blonde.svg',   w: 80,  h: 100 },
-    { id: 'hair-wavy-black',    name: 'Wavy Black',    src: 'assets/hair/wavy-black.svg',    w: 80,  h: 110 },
-    { id: 'hair-updo',          name: 'Updo',          src: 'assets/hair/updo.svg',          w: 70,  h: 70  },
-    { id: 'hair-ponytail',      name: 'Ponytail',      src: 'assets/hair/ponytail.svg',      w: 75,  h: 95  },
-  ],
-  tops: [
-    { id: 'top-crop-pink',      name: 'Crop Top',      src: 'assets/tops/crop-pink.svg',     w: 80,  h: 55  },
-    { id: 'top-tube-blue',      name: 'Tube Top',      src: 'assets/tops/tube-blue.svg',     w: 80,  h: 48  },
-    { id: 'top-halter',         name: 'Halter',        src: 'assets/tops/halter.svg',        w: 80,  h: 55  },
-    { id: 'top-jacket',         name: 'Jacket',        src: 'assets/tops/jacket.svg',        w: 90,  h: 75  },
-    { id: 'top-dress',          name: 'Mini Dress',    src: 'assets/tops/dress.svg',         w: 82,  h: 120 },
-  ],
-  bottoms: [
-    { id: 'bottom-flare-jeans', name: 'Flare Jeans',  src: 'assets/bottoms/flare-jeans.svg', w: 80, h: 120 },
-    { id: 'bottom-miniskirt',   name: 'Mini Skirt',    src: 'assets/bottoms/miniskirt.svg',   w: 80, h: 55  },
-    { id: 'bottom-skirt-long',  name: 'Long Skirt',    src: 'assets/bottoms/skirt-long.svg',  w: 80, h: 110 },
-    { id: 'bottom-shorts',      name: 'Shorts',        src: 'assets/bottoms/shorts.svg',      w: 80, h: 50  },
-  ],
-  shoes: [
-    { id: 'shoes-platforms',    name: 'Platforms',     src: 'assets/shoes/platforms.svg',    w: 80,  h: 35  },
-    { id: 'shoes-heels',        name: 'Heels',         src: 'assets/shoes/heels.svg',        w: 80,  h: 35  },
-    { id: 'shoes-boots',        name: 'Knee Boots',    src: 'assets/shoes/boots.svg',        w: 80,  h: 75  },
-    { id: 'shoes-sneakers',     name: 'Sneakers',      src: 'assets/shoes/sneakers.svg',     w: 80,  h: 30  },
-  ],
-  accessories: [
-    { id: 'acc-sunglasses',     name: 'Sunglasses',    src: 'assets/accessories/sunglasses.svg', w: 60, h: 22 },
-    { id: 'acc-bag',            name: 'Handbag',       src: 'assets/accessories/bag.svg',         w: 45, h: 50 },
-    { id: 'acc-necklace',       name: 'Necklace',      src: 'assets/accessories/necklace.svg',    w: 60, h: 20 },
-    { id: 'acc-wings',          name: 'Fairy Wings',   src: 'assets/accessories/wings.svg',       w: 130,h: 100 },
-    { id: 'acc-crown',          name: 'Tiara',         src: 'assets/accessories/crown.svg',       w: 55, h: 30 },
-    { id: 'acc-wand',           name: 'Wand',          src: 'assets/accessories/wand.svg',        w: 40, h: 90 },
-  ],
-  pets: [
-    { id: 'pet-cat',            name: 'Cat',           src: 'assets/pets/cat.svg',           w: 65,  h: 55  },
-    { id: 'pet-dog',            name: 'Puppy',         src: 'assets/pets/dog.svg',           w: 65,  h: 55  },
-    { id: 'pet-butterfly',      name: 'Butterfly',     src: 'assets/pets/butterfly.svg',     w: 55,  h: 45  },
-  ],
-};
+// ── DOM refs
+const canvas     = document.getElementById('canvas');
+const ghost      = document.getElementById('drag-ghost');
+const catTabs    = document.getElementById('cat-tabs');
+const spriteGrid = document.getElementById('sprite-grid');
 
-/* ── STATE ─────────────────────────────── */
-let activeCategory = 'hair';
-let nextZ = 10;
-let canvasItems = []; // { el, item }
-let selectedItem = null; // currently selected canvas item element
-let activeDrag = null;   // { type: 'tray'|'canvas', ... }
-const ghost = document.getElementById('drag-ghost');
+// ── State
+let placed      = [];   // { el, src, scale }
+let selected    = null; // currently selected canvas item
+let nextZ       = 10;
+let globalScale = 1;    // from the scale slider
 
-/* ── INIT ─────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  setupTabs();
-  renderTray('hair');
-  setupCanvas();
-  setupToolbar();
-  setupSkinButtons();
-  setupBgButtons();
-});
+// ── Drag state  (null when not dragging)
+// { type: 'tray'|'canvas', src, el?, offsetX, offsetY }
+let drag = null;
 
-/* ── TABS ─────────────────────────────── */
-function setupTabs() {
-  document.querySelectorAll('.tray-tab').forEach(btn => {
+// ══════════════════════════════════════
+// WARDROBE
+// ══════════════════════════════════════
+
+function buildWardrobe() {
+  const categories = Object.keys(SPRITE_MANIFEST);
+  if (!categories.length) { catTabs.textContent = 'No sprites found.'; return; }
+
+  categories.forEach((cat, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-tab' + (i === 0 ? ' active' : '');
+    btn.textContent = cat;
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.tray-tab').forEach(b => b.classList.remove('active'));
+      catTabs.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      activeCategory = btn.dataset.cat;
-      renderTray(activeCategory);
+      fillGrid(cat);
     });
+    catTabs.appendChild(btn);
   });
+
+  fillGrid(categories[0]);
 }
 
-/* ── TRAY RENDERING ──────────────────── */
-function renderTray(category) {
-  const container = document.getElementById('tray-items');
-  container.innerHTML = '';
+function fillGrid(cat) {
+  spriteGrid.innerHTML = '';
+  const sprites = SPRITE_MANIFEST[cat] || [];
 
-  (ITEMS[category] || []).forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'tray-item';
-    card.title = item.name;
-
+  sprites.forEach(src => {
     const img = document.createElement('img');
-    img.src = item.src;
-    img.alt = item.name;
-    img.draggable = false;
-    img.onerror = () => { img.style.opacity = '0.3'; };
-
-    const label = document.createElement('div');
-    label.className = 'tray-item-name';
-    label.textContent = item.name;
-
-    card.appendChild(img);
-    card.appendChild(label);
-
-    card.addEventListener('mousedown', (e) => startTrayDrag(e, item));
-    card.addEventListener('touchstart', (e) => startTrayTouch(e, item), { passive: false });
-
-    container.appendChild(card);
+    img.src        = src;
+    img.className  = 'sprite-thumb';
+    img.title      = src.split('/').pop().replace(/\.\w+$/, '').replace(/[_-]/g, ' ');
+    img.draggable  = false;
+    img.addEventListener('mousedown',  e => onTrayMouseDown(e, src));
+    img.addEventListener('touchstart', e => onTrayTouchStart(e, src), { passive: false });
+    spriteGrid.appendChild(img);
   });
 }
 
-/* ── CANVAS SETUP ─────────────────────── */
-function setupCanvas() {
-  const canvas = document.getElementById('canvas');
+// ══════════════════════════════════════
+// DRAG FROM TRAY  (mouse)
+// ══════════════════════════════════════
 
-  // Click canvas background = deselect
-  canvas.addEventListener('mousedown', (e) => {
-    if (e.target === canvas || e.target.id === 'doll-base') {
-      deselectAll();
-    }
-  });
-}
-
-/* ── DRAG FROM TRAY ──────────────────── */
-function startTrayDrag(e, item) {
+function onTrayMouseDown(e, src) {
+  if (e.button !== 0) return;
   e.preventDefault();
-
-  ghost.src = item.src;
-  ghost.style.width = item.w + 'px';
-  ghost.style.height = item.h + 'px';
-  ghost.style.display = 'block';
-  positionGhost(e.clientX, e.clientY);
-
-  activeDrag = { type: 'tray', item };
-
-  document.addEventListener('mousemove', onMouseMove);
-  document.addEventListener('mouseup', onMouseUp);
+  drag = { type: 'tray', src };
+  showGhost(src, e.clientX, e.clientY);
 }
 
-/* ── DRAG CANVAS ITEM ────────────────── */
-function startCanvasDrag(e, el, item) {
+// ══════════════════════════════════════
+// REPOSITION CANVAS ITEM  (mouse)
+// ══════════════════════════════════════
+
+function onCanvasItemMouseDown(e, item) {
+  if (e.button !== 0) return;
   e.preventDefault();
   e.stopPropagation();
-
-  selectItem(el);
-
-  const rect = el.getBoundingClientRect();
-  const canvasRect = document.getElementById('canvas').getBoundingClientRect();
-
-  activeDrag = {
-    type: 'canvas',
-    el,
+  selectItem(item);
+  const rect = item.el.getBoundingClientRect();
+  drag = {
+    type:    'canvas',
     item,
     offsetX: e.clientX - rect.left,
     offsetY: e.clientY - rect.top,
   };
-
-  document.addEventListener('mousemove', onMouseMove);
-  document.addEventListener('mouseup', onMouseUp);
 }
 
-/* ── MOUSE MOVE ──────────────────────── */
-function onMouseMove(e) {
-  if (!activeDrag) return;
+// ══════════════════════════════════════
+// GLOBAL MOUSE EVENTS
+// ══════════════════════════════════════
 
-  if (activeDrag.type === 'tray') {
-    positionGhost(e.clientX, e.clientY);
-  } else if (activeDrag.type === 'canvas') {
-    const canvas = document.getElementById('canvas');
-    const canvasRect = canvas.getBoundingClientRect();
-    const x = e.clientX - canvasRect.left - activeDrag.offsetX;
-    const y = e.clientY - canvasRect.top  - activeDrag.offsetY;
-    activeDrag.el.style.left = x + 'px';
-    activeDrag.el.style.top  = y + 'px';
+document.addEventListener('mousemove', e => {
+  if (!drag) return;
+
+  if (drag.type === 'tray') {
+    moveGhost(e.clientX, e.clientY);
+  } else if (drag.type === 'canvas') {
+    const r   = canvas.getBoundingClientRect();
+    const x   = e.clientX - r.left - drag.offsetX;
+    const y   = e.clientY - r.top  - drag.offsetY;
+    drag.item.el.style.left = x + 'px';
+    drag.item.el.style.top  = y + 'px';
   }
-}
-
-/* ── MOUSE UP ────────────────────────── */
-function onMouseUp(e) {
-  if (!activeDrag) return;
-
-  if (activeDrag.type === 'tray') {
-    ghost.style.display = 'none';
-
-    const canvas = document.getElementById('canvas');
-    const canvasRect = canvas.getBoundingClientRect();
-    const { item } = activeDrag;
-
-    // Only place if dropped inside canvas
-    if (
-      e.clientX >= canvasRect.left && e.clientX <= canvasRect.right &&
-      e.clientY >= canvasRect.top  && e.clientY <= canvasRect.bottom
-    ) {
-      const x = e.clientX - canvasRect.left - item.w / 2;
-      const y = e.clientY - canvasRect.top  - item.h / 2;
-      placeItemOnCanvas(item, x, y);
-    }
-  }
-
-  activeDrag = null;
-  document.removeEventListener('mousemove', onMouseMove);
-  document.removeEventListener('mouseup', onMouseUp);
-}
-
-/* ── PLACE ITEM ON CANVAS ────────────── */
-function placeItemOnCanvas(item, x, y) {
-  const canvas = document.getElementById('canvas');
-
-  const el = document.createElement('img');
-  el.src = item.src;
-  el.alt = item.name;
-  el.className = 'canvas-item';
-  el.style.width  = item.w + 'px';
-  el.style.height = item.h + 'px';
-  el.style.left   = clamp(x, 0, 360 - item.w) + 'px';
-  el.style.top    = clamp(y, 0, 420 - item.h) + 'px';
-  el.style.zIndex = nextZ++;
-  el.draggable    = false;
-
-  // Select on click
-  el.addEventListener('mousedown', (e) => {
-    if (e.detail === 1) startCanvasDrag(e, el, item);
-  });
-
-  // Double-click removes
-  el.addEventListener('dblclick', (e) => {
-    e.stopPropagation();
-    removeCanvasItem(el);
-  });
-
-  // Touch support
-  el.addEventListener('touchstart', (e) => startItemTouch(e, el, item), { passive: false });
-
-  canvas.appendChild(el);
-  canvasItems.push({ el, item });
-  selectItem(el);
-}
-
-/* ── TOUCH SUPPORT ────────────────────── */
-function startTrayTouch(e, item) {
-  e.preventDefault();
-  const touch = e.touches[0];
-
-  ghost.src = item.src;
-  ghost.style.width = item.w + 'px';
-  ghost.style.height = item.h + 'px';
-  ghost.style.display = 'block';
-  positionGhost(touch.clientX, touch.clientY);
-
-  function onTouchMove(ev) {
-    const t = ev.touches[0];
-    positionGhost(t.clientX, t.clientY);
-  }
-
-  function onTouchEnd(ev) {
-    ghost.style.display = 'none';
-    const t = ev.changedTouches[0];
-    const canvas = document.getElementById('canvas');
-    const r = canvas.getBoundingClientRect();
-    if (t.clientX >= r.left && t.clientX <= r.right && t.clientY >= r.top && t.clientY <= r.bottom) {
-      placeItemOnCanvas(item, t.clientX - r.left - item.w/2, t.clientY - r.top - item.h/2);
-    }
-    document.removeEventListener('touchmove', onTouchMove);
-    document.removeEventListener('touchend', onTouchEnd);
-  }
-
-  document.addEventListener('touchmove', onTouchMove, { passive: false });
-  document.addEventListener('touchend', onTouchEnd);
-}
-
-function startItemTouch(e, el, item) {
-  e.preventDefault();
-  e.stopPropagation();
-  selectItem(el);
-
-  const touch = e.touches[0];
-  const rect = el.getBoundingClientRect();
-  const canvasRect = document.getElementById('canvas').getBoundingClientRect();
-  const offsetX = touch.clientX - rect.left;
-  const offsetY = touch.clientY - rect.top;
-
-  function onMove(ev) {
-    const t = ev.touches[0];
-    el.style.left = (t.clientX - canvasRect.left - offsetX) + 'px';
-    el.style.top  = (t.clientY - canvasRect.top  - offsetY) + 'px';
-  }
-
-  document.addEventListener('touchmove', onMove, { passive: false });
-  document.addEventListener('touchend', () => {
-    document.removeEventListener('touchmove', onMove);
-  }, { once: true });
-}
-
-/* ── SELECTION ────────────────────────── */
-function selectItem(el) {
-  deselectAll();
-  el.classList.add('selected');
-  selectedItem = el;
-}
-
-function deselectAll() {
-  document.querySelectorAll('.canvas-item.selected').forEach(el => el.classList.remove('selected'));
-  selectedItem = null;
-}
-
-function removeCanvasItem(el) {
-  if (selectedItem === el) selectedItem = null;
-  canvasItems = canvasItems.filter(c => c.el !== el);
-  el.remove();
-}
-
-/* ── TOOLBAR ──────────────────────────── */
-function setupToolbar() {
-  document.getElementById('btn-undo').addEventListener('click', () => {
-    if (canvasItems.length) removeCanvasItem(canvasItems[canvasItems.length - 1].el);
-  });
-
-  document.getElementById('btn-clear').addEventListener('click', () => {
-    [...canvasItems].forEach(c => c.el.remove());
-    canvasItems = [];
-    selectedItem = null;
-  });
-
-  document.getElementById('btn-front').addEventListener('click', () => {
-    if (selectedItem) selectedItem.style.zIndex = nextZ++;
-  });
-
-  document.getElementById('btn-back').addEventListener('click', () => {
-    if (selectedItem) {
-      const minZ = Math.max(2, parseInt(selectedItem.style.zIndex) - 1);
-      selectedItem.style.zIndex = minZ;
-    }
-  });
-
-  document.getElementById('btn-remove').addEventListener('click', () => {
-    if (selectedItem) removeCanvasItem(selectedItem);
-  });
-}
-
-/* ── SKIN TONE ────────────────────────── */
-function setupSkinButtons() {
-  const base = document.getElementById('doll-base');
-  document.querySelectorAll('.skin-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.skin-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      base.src = btn.dataset.src;
-    });
-  });
-  // Default active
-  document.querySelector('.skin-btn').classList.add('active');
-}
-
-/* ── BACKGROUND ──────────────────────── */
-function setupBgButtons() {
-  const canvas = document.getElementById('canvas');
-  document.querySelectorAll('.bg-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.bg-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      canvas.style.background = btn.dataset.color;
-    });
-  });
-  document.querySelector('.bg-btn').classList.add('active');
-}
-
-/* ── SAVE AS PNG ──────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('btn-save').addEventListener('click', saveDoll);
 });
 
-async function saveDoll() {
-  const btn = document.getElementById('btn-save');
-  btn.textContent = '⏳ Saving…';
-  btn.disabled = true;
+document.addEventListener('mouseup', e => {
+  if (!drag) return;
 
-  const canvasEl   = document.getElementById('canvas');
-  const canvasRect = canvasEl.getBoundingClientRect();
-  const W = canvasEl.offsetWidth;
-  const H = canvasEl.offsetHeight;
-
-  const offscreen = document.createElement('canvas');
-  offscreen.width  = W;
-  offscreen.height = H;
-  const ctx = offscreen.getContext('2d');
-
-  // Background
-  ctx.fillStyle = canvasEl.style.background || '#FFFFFF';
-  ctx.fillRect(0, 0, W, H);
-
-  // Collect all visible images in z-order
-  const layers = [];
-
-  const baseImg = document.getElementById('doll-base');
-  const baseRect = baseImg.getBoundingClientRect();
-  layers.push({ src: baseImg.src, x: baseRect.left - canvasRect.left, y: baseRect.top - canvasRect.top, w: baseImg.offsetWidth, h: baseImg.offsetHeight, z: 1 });
-
-  canvasItems.forEach(({ el }) => {
-    const r = el.getBoundingClientRect();
-    layers.push({ src: el.src, x: r.left - canvasRect.left, y: r.top - canvasRect.top, w: el.offsetWidth, h: el.offsetHeight, z: parseInt(el.style.zIndex) || 10 });
-  });
-
-  layers.sort((a, b) => a.z - b.z);
-
-  for (const layer of layers) {
-    await drawLayer(ctx, layer);
+  if (drag.type === 'tray') {
+    hideGhost();
+    const r = canvas.getBoundingClientRect();
+    if (e.clientX >= r.left && e.clientX <= r.right &&
+        e.clientY >= r.top  && e.clientY <= r.bottom) {
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      placeItem(drag.src, x, y);
+    }
   }
 
-  offscreen.toBlob(blob => {
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'my-doll.png';
-    a.click();
-    URL.revokeObjectURL(url);
+  drag = null;
+});
 
-    // Save to gallery
-    const dataUrl = offscreen.toDataURL('image/png');
-    const gallery = JSON.parse(localStorage.getItem('dollz-gallery') || '[]');
-    gallery.unshift({ dataUrl, date: new Date().toLocaleDateString() });
-    if (gallery.length > 30) gallery.pop();
-    localStorage.setItem('dollz-gallery', JSON.stringify(gallery));
+// ══════════════════════════════════════
+// TOUCH SUPPORT  (tray → canvas)
+// ══════════════════════════════════════
 
-    btn.textContent = '✓ Saved!';
-    setTimeout(() => { btn.innerHTML = '💾 Save PNG'; btn.disabled = false; }, 1800);
-  });
+function onTrayTouchStart(e, src) {
+  e.preventDefault();
+  const t = e.touches[0];
+  drag = { type: 'tray', src };
+  showGhost(src, t.clientX, t.clientY);
 }
 
-function drawLayer(ctx, layer) {
-  return new Promise(resolve => {
-    const img = new Image();
+document.addEventListener('touchmove', e => {
+  if (!drag) return;
+  e.preventDefault();
+  const t = e.touches[0];
+
+  if (drag.type === 'tray') {
+    moveGhost(t.clientX, t.clientY);
+  } else if (drag.type === 'canvas') {
+    const r = canvas.getBoundingClientRect();
+    drag.item.el.style.left = (t.clientX - r.left - drag.offsetX) + 'px';
+    drag.item.el.style.top  = (t.clientY - r.top  - drag.offsetY) + 'px';
+  }
+}, { passive: false });
+
+document.addEventListener('touchend', e => {
+  if (!drag) return;
+
+  if (drag.type === 'tray') {
+    hideGhost();
+    const t = e.changedTouches[0];
+    const r = canvas.getBoundingClientRect();
+    if (t.clientX >= r.left && t.clientX <= r.right &&
+        t.clientY >= r.top  && t.clientY <= r.bottom) {
+      placeItem(drag.src, t.clientX - r.left, t.clientY - r.top);
+    }
+  }
+
+  drag = null;
+});
+
+// ══════════════════════════════════════
+// GHOST IMAGE
+// ══════════════════════════════════════
+
+function showGhost(src, cx, cy) {
+  ghost.src             = src;
+  ghost.style.display   = 'block';
+  ghost.style.maxWidth  = '80px';
+  ghost.style.maxHeight = '120px';
+  moveGhost(cx, cy);
+}
+
+function moveGhost(cx, cy) {
+  ghost.style.left = cx + 'px';
+  ghost.style.top  = cy + 'px';
+}
+
+function hideGhost() {
+  ghost.style.display = 'none';
+}
+
+// ══════════════════════════════════════
+// PLACE ITEM ON CANVAS
+// ══════════════════════════════════════
+
+function placeItem(src, cx, cy) {
+  const img        = document.createElement('img');
+  img.src          = src;
+  img.className    = 'canvas-item';
+  img.draggable    = false;
+  img.style.zIndex = nextZ++;
+
+  // Position centred on drop point; adjust once loaded so we know actual size
+  img.style.left = (cx - 30) + 'px';
+  img.style.top  = (cy - 30) + 'px';
+
+  img.onload = () => {
+    img.style.left = (cx - img.naturalWidth  * globalScale / 2) + 'px';
+    img.style.top  = (cy - img.naturalHeight * globalScale / 2) + 'px';
+    applyScale(img);
+  };
+
+  const item = { el: img, src };
+  placed.push(item);
+
+  img.addEventListener('mousedown',  e => onCanvasItemMouseDown(e, item));
+  img.addEventListener('touchstart', e => onCanvasItemTouchStart(e, item), { passive: false });
+  img.addEventListener('dblclick',   () => removeItem(item));
+  img.addEventListener('click',      e => { e.stopPropagation(); selectItem(item); });
+
+  canvas.appendChild(img);
+  selectItem(item);
+}
+
+function applyScale(el) {
+  el.style.width  = (el.naturalWidth  * globalScale) + 'px';
+  el.style.height = (el.naturalHeight * globalScale) + 'px';
+}
+
+// Touch reposition of canvas items
+function onCanvasItemTouchStart(e, item) {
+  e.preventDefault();
+  e.stopPropagation();
+  selectItem(item);
+  const t = e.touches[0];
+  const r = item.el.getBoundingClientRect();
+  drag = {
+    type:    'canvas',
+    item,
+    offsetX: t.clientX - r.left,
+    offsetY: t.clientY - r.top,
+  };
+}
+
+// ══════════════════════════════════════
+// SELECTION
+// ══════════════════════════════════════
+
+function selectItem(item) {
+  if (selected) selected.el.classList.remove('selected');
+  selected = item;
+  if (item) item.el.classList.add('selected');
+}
+
+canvas.addEventListener('click', () => selectItem(null));
+
+// ══════════════════════════════════════
+// REMOVE ITEM
+// ══════════════════════════════════════
+
+function removeItem(item) {
+  item.el.remove();
+  placed = placed.filter(i => i !== item);
+  if (selected === item) selectItem(null);
+}
+
+// ══════════════════════════════════════
+// TOOLBAR BUTTONS
+// ══════════════════════════════════════
+
+document.getElementById('btn-undo').addEventListener('click', () => {
+  if (placed.length) removeItem(placed[placed.length - 1]);
+});
+
+document.getElementById('btn-clear').addEventListener('click', () => {
+  placed.forEach(i => i.el.remove());
+  placed = [];
+  selectItem(null);
+});
+
+document.getElementById('btn-front').addEventListener('click', () => {
+  if (selected) selected.el.style.zIndex = nextZ++;
+});
+
+document.getElementById('btn-back').addEventListener('click', () => {
+  if (selected) selected.el.style.zIndex = 1;
+});
+
+document.getElementById('btn-delete').addEventListener('click', () => {
+  if (selected) removeItem(selected);
+});
+
+// ── Background swatches
+document.querySelectorAll('.bg-swatch').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.bg-swatch').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    canvas.style.backgroundColor = btn.dataset.color;
+  });
+});
+
+// ── Scale slider
+const scaleSlider = document.getElementById('scale-slider');
+const scaleLabel  = document.getElementById('scale-label');
+
+scaleSlider.addEventListener('input', () => {
+  globalScale = scaleSlider.value / 100;
+  scaleLabel.textContent = scaleSlider.value + '%';
+  // Rescale all existing canvas items
+  placed.forEach(item => {
+    const el = item.el;
+    if (el.naturalWidth) applyScale(el);
+  });
+});
+
+// ══════════════════════════════════════
+// SAVE AS PNG
+// ══════════════════════════════════════
+
+document.getElementById('btn-save').addEventListener('click', async () => {
+  const btn = document.getElementById('btn-save');
+  btn.textContent = '⏳ saving…';
+  btn.disabled    = true;
+
+  const out = document.createElement('canvas');
+  out.width  = canvas.offsetWidth;
+  out.height = canvas.offsetHeight;
+  const ctx  = out.getContext('2d');
+
+  // BG colour
+  ctx.fillStyle = canvas.style.backgroundColor || '#FFB7C5';
+  ctx.fillRect(0, 0, out.width, out.height);
+
+  // Sort items by z-index and draw in order
+  const sorted = [...canvas.querySelectorAll('.canvas-item')]
+    .sort((a, b) => (parseInt(a.style.zIndex) || 0) - (parseInt(b.style.zIndex) || 0));
+
+  for (const el of sorted) {
+    await drawEl(ctx, el);
+  }
+
+  // Attribution
+  ctx.fillStyle = 'rgba(0,0,0,0.35)';
+  ctx.font = '9px Arial';
+  ctx.fillText('sprites © easydoll.com  |  dollzmaker passion project', 4, out.height - 4);
+
+  const a   = document.createElement('a');
+  a.download = 'my-doll.png';
+  a.href     = out.toDataURL('image/png');
+  a.click();
+
+  btn.textContent = '💾 Save PNG';
+  btn.disabled    = false;
+});
+
+function drawEl(ctx, el) {
+  return new Promise(res => {
+    const img   = new Image();
     img.crossOrigin = 'anonymous';
-    img.onload = () => { ctx.drawImage(img, layer.x, layer.y, layer.w, layer.h); resolve(); };
-    img.onerror = resolve;
-    img.src = layer.src;
+    img.onload = () => {
+      ctx.drawImage(img, parseInt(el.style.left) || 0, parseInt(el.style.top) || 0,
+                    el.offsetWidth, el.offsetHeight);
+      res();
+    };
+    img.onerror = res;
+    img.src = el.src;
   });
 }
 
-/* ── UTILS ────────────────────────────── */
-function positionGhost(x, y) {
-  ghost.style.left = x + 'px';
-  ghost.style.top  = y + 'px';
-}
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
 
-function clamp(val, min, max) {
-  return Math.max(min, Math.min(max, val));
-}
+buildWardrobe();
